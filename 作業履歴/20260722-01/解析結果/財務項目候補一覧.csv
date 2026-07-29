@@ -1,0 +1,9 @@
+file,候補名,offset,block,データ型候補,確度,根拠,追加確認事項
+kigyo.dat,銘柄コードまたは内部コード,0,record,u32le,有力,先頭レコードがkabu.lst先頭1001と一致し2件目も1010と一致,全件照合
+kigyo.dat,決算期候補,113/168/223/278/333/443/498/553/608/663,record,ASCII YYMM,有力,多数レコードで4桁年月形式が一定オフセットに出現,FChart表示値との照合
+kigyo.dat,発表日または更新日候補,58/479/534/589/644/699,record,ASCII YYMMDD,仮説,6桁日付形式が年度ブロック付近に出現,意味づけ照合
+kigyo.dat,企業概要,772,record,CP932文字列,有力,日本語の企業説明文を抽出,会社名・概要表示との照合
+kigyo2.dat,期別ブロック日付候補,1/56/111/166/221/276,55byte block,ASCII YYMM,有力,330 byte中に55 byteブロック6個として反復,FChart表示値との照合
+kigyo3.dat,期別ブロック日付候補,1/56/111/166/221/276,55byte block,ASCII YYMM,有力,330 byte中に55 byteブロック6個として反復,FChart表示値との照合
+kigyo3.dat,発表日候補,37/92/147/202/257/312,55byte block,ASCII YYMMDD,仮説,6桁日付候補がブロック末尾付近に出現,FChart表示値との照合
+Zaimu.dat,詳細財務項目候補,未確定,unknown,unknown,不明,単純固定長に未確定,構造分解と画面値照合

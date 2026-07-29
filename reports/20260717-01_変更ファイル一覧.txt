@@ -1,0 +1,28 @@
+20260717-01 変更ファイル一覧
+
+実装・設定
+- tools/fxx_sqlite/src/fxx_sqlite.py
+- tools/fxx_sqlite/config/config.json
+- tools/fxx_sqlite/schema.sql
+- tools/fxx_sqlite/README.md
+- tools/fxx_sqlite/tests/test_fxx_sqlite.py
+
+SQLite
+- database/fund_stock.db
+- database/backup/fund_stock_*.db
+
+ログ
+- logs/import/F50_import.json ～ logs/import/F89_import.json
+- logs/import/F50_skip.json ～ logs/import/F89_skip.json
+- logs/validation/validation_1308.json
+- logs/validation/validation_8267.json
+- logs/validation/validation_10272.json
+- logs/validation/validation_overall.json
+
+報告書
+- reports/20260717-01_作業完了報告書.txt
+- reports/20260717-01_未解決事項一覧.txt
+- reports/20260717-01_変更ファイル一覧.txt
+
+作業用
+- work/20260717-01/provided/

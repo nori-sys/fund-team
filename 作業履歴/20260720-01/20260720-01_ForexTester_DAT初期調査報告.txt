@@ -1,0 +1,173 @@
+20260720-01_ForexTester_DAT初期調査報告
+
+1. 調査対象
+- 主対象: D:\ForexTester6\data\History\USDJPY
+- 対象ファイル: info.dat / Bars.dat / ticks.dat
+- 備考: D:\ForexTester6\Education\data\History\USDJPY にも同名ファイルあり。今回は通常データ領域を主対象として調査。
+
+2. 実施範囲
+- ファイル存在、サイズ、更新日時、属性、ReadOnly open可否を確認。
+- 各DATは先頭・中央・末尾の最大4096ByteのみをReadOnlyで読取。
+- ticks.dat全体読込、DAT全体コピー、元ファイル変更は未実施。
+
+3. ファイル情報
+- info.dat: 320 bytes / 更新日時 2025-01-16 19:22:59 / ReadOnly open OK / 属性 Archive (PowerShell表示); Python stat mode 0o100666
+- Bars.dat: 406978564 bytes / 更新日時 2026-07-10 22:10:53 / ReadOnly open OK / 属性 Archive (PowerShell表示); Python stat mode 0o100666
+- ticks.dat: 11783800004 bytes / 更新日時 2026-07-10 22:11:28 / ReadOnly open OK / 属性 Archive (PowerShell表示); Python stat mode 0o100666
+
+4. 部分読取サンプルの性質
+- info.dat head: offset=0, length=320, NUL比率=0.000, ASCII表示可能比率=1.000
+- info.dat middle: offset=0, length=320, NUL比率=0.000, ASCII表示可能比率=1.000
+- info.dat tail: offset=0, length=320, NUL比率=0.000, ASCII表示可能比率=1.000
+- Bars.dat head: offset=0, length=4096, NUL比率=0.068, ASCII表示可能比率=0.473
+- Bars.dat middle: offset=203487234, length=4096, NUL比率=0.081, ASCII表示可能比率=0.468
+- Bars.dat tail: offset=406974468, length=4096, NUL比率=1.000, ASCII表示可能比率=0.000
+- ticks.dat head: offset=0, length=4096, NUL比率=0.109, ASCII表示可能比率=0.456
+- ticks.dat middle: offset=5891897954, length=4096, NUL比率=0.110, ASCII表示可能比率=0.450
+- ticks.dat tail: offset=11783795908, length=4096, NUL比率=1.000, ASCII表示可能比率=0.000
+
+5. 主要推定
+- info.dat: ASCII平文の key=value 形式。name=USDJPY、decimals=3、spread=12、lot=100000、group=Majors 等を確認。
+- Bars.dat: 4Byteヘッダ + 40Byte固定長レコードの可能性が高い。40Byteは double 5個で、日時 + OHLC と解釈できる。
+- Bars.dat推定レコード数: 10174464 件。
+- ticks.dat: 4Byteヘッダ + 28Byte固定長レコードの可能性が高い。28Byteは double 3個 + uint32 で、日時 + Bid/Ask系価格 + フラグまたは出来高と解釈できる。
+- ticks.dat推定レコード数: 420850000 件。
+- 末尾4096Byteは Bars.dat / ticks.dat とも全て 0x00 で、領域予約または未使用領域が含まれる可能性がある。
+
+6. 日時・価格形式
+- 日時形式: OLE Automation Date / Excelシリアル日付系の double と推定。例: 37747.0 は 2003-05-06 00:00:00 相当。
+- 価格形式: IEEE754 little-endian double と推定。先頭サンプルで USDJPY価格 118.438 などが自然に復元できる。
+- 識別子: 人間可読のマジック文字列は Bars.dat / ticks.dat の先頭では確認できない。先頭4Byteは形式識別子、バージョン、または管理値の可能性。
+
+7. Bars.dat と ticks.dat の関係
+- ticks.dat はティック単位の日時・価格情報、Bars.dat はそれを集約したバー（OHLC）情報と推定。
+- Bars.dat は 406,978,564 bytes、ticks.dat は 11,783,800,004 bytes で、粒度差からも ticks.dat が元データ、Bars.dat が集約データである可能性が高い。
+
+8. info.dat の役割
+- 銘柄メタ情報ファイルと判断。確認できた主要項目は以下。
+```text
+name=USDJPY
+type=0
+decimals=3
+spread=12
+lot=100000
+LotCurrency=USD
+BaseCurrency=USD
+SwapLong=0.0000
+SwapShort=0.0000
+MinDistToPrice=12
+Margin=1000.00
+HedgedMargin=500.00
+MarginCurrency=USD
+Broker=Advanced Data Feed
+CreditShoulder=100
+UseCreditShoulder=1
+CommPerLot=0.00
+ApplyCommission=0
+group=Majors
+```
+
+9. サンプルデコード結果
+Bars.dat 先頭5件（4Byteヘッダ後、40Byte固定長仮定）:
+```json
+[
+  {
+    "file_offset": 4,
+    "ole_date": 37747.0,
+    "datetime_est": "2003-05-06 00:00:00",
+    "open": 118.438,
+    "high": 118.438,
+    "low": 118.441,
+    "close": 118.433
+  },
+  {
+    "file_offset": 44,
+    "ole_date": 250099998.0,
+    "datetime_est": "range_check_failed",
+    "open": 37747.00069444445,
+    "high": 118.435,
+    "low": 118.463,
+    "close": 118.463
+  },
+  {
+    "file_offset": 84,
+    "ole_date": 118.435,
+    "datetime_est": "1900-04-27 10:26:24",
+    "open": 372400000.0,
+    "high": 37747.001388888886,
+    "low": 118.459,
+    "close": 118.467
+  },
+  {
+    "file_offset": 124,
+    "ole_date": 118.467,
+    "datetime_est": "1900-04-27 11:12:28",
+    "open": 118.455,
+    "high": 357100001.0,
+    "low": 37747.00208333333,
+    "close": 118.464
+  },
+  {
+    "file_offset": 164,
+    "ole_date": 118.474,
+    "datetime_est": "1900-04-27 11:22:33",
+    "open": 118.476,
+    "high": 118.463,
+    "low": 126700001.0,
+    "close": 37747.00277777778
+  }
+]
+```
+ticks.dat 先頭5件（4Byteヘッダ後、28Byte固定長仮定）:
+```json
+[
+  {
+    "file_offset": 4,
+    "ole_date": 37747.00005787037,
+    "datetime_est": "2003-05-06 00:00:05",
+    "bid_or_price1": 118.438,
+    "ask_or_price2": 118.458,
+    "flag_or_volume": 1
+  },
+  {
+    "file_offset": 32,
+    "ole_date": 37747.000243055554,
+    "datetime_est": "2003-05-06 00:00:21",
+    "bid_or_price1": 118.434,
+    "ask_or_price2": 118.459,
+    "flag_or_volume": 1
+  },
+  {
+    "file_offset": 60,
+    "ole_date": 37747.00030092592,
+    "datetime_est": "2003-05-06 00:00:26",
+    "bid_or_price1": 118.441,
+    "ask_or_price2": 118.451,
+    "flag_or_volume": 1
+  },
+  {
+    "file_offset": 88,
+    "ole_date": 37747.000393518516,
+    "datetime_est": "2003-05-06 00:00:34",
+    "bid_or_price1": 118.44,
+    "ask_or_price2": 118.45,
+    "flag_or_volume": 1
+  },
+  {
+    "file_offset": 116,
+    "ole_date": 37747.000439814816,
+    "datetime_est": "2003-05-06 00:00:38",
+    "bid_or_price1": 118.433,
+    "ask_or_price2": 118.453,
+    "flag_or_volume": 1
+  }
+]
+```
+
+10. 総合判定
+A 直接解析可能性高い
+理由: ReadOnly参照・部分読取が可能で、info.datは平文メタ情報、Bars.dat / ticks.dat は限定サンプルから日時・価格が自然に復元できる固定長レコード構造と判断できるため。実運用変換前には、既知日時・既知価格との照合による最終確認が望ましい。
+
+11. 安全確認
+- 元ファイルを変更していないことを確認。
+- 書込み、削除、移動、名称変更、DAT全体コピー、DAT全体読込、Forex Tester設定変更は実施していない。

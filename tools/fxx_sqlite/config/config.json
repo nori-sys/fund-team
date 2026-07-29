@@ -1,0 +1,28 @@
+{
+  "fxx_source_folder": "C:\\fchart\\fpac",
+  "master_file": "C:\\fchart\\kabu.lst",
+  "workspace_folder": "E:\\AI ワークスペース\\CODEX\\ファンドチーム_Workspace",
+  "database_path": "E:\\AI ワークスペース\\CODEX\\ファンドチーム_Workspace\\database\\fund_stock.db",
+  "schema_path": "E:\\AI ワークスペース\\CODEX\\ファンドチーム_Workspace\\tools\\fxx_sqlite\\schema.sql",
+  "import_log_folder": "E:\\AI ワークスペース\\CODEX\\ファンドチーム_Workspace\\logs\\import",
+  "validation_log_folder": "E:\\AI ワークスペース\\CODEX\\ファンドチーム_Workspace\\logs\\validation",
+  "report_folder": "E:\\AI ワークスペース\\CODEX\\ファンドチーム_Workspace\\reports",
+  "minimum_fxx_number": 50,
+  "validation_symbols": [
+    {
+      "fchart_code": 1308,
+      "reference_file": "E:\\AI ワークスペース\\CODEX\\ファンドチーム_Workspace\\作業受付\\20260717-01\\1308.txt",
+      "mode": "exact"
+    },
+    {
+      "fchart_code": 8267,
+      "reference_file": "E:\\AI ワークスペース\\CODEX\\ファンドチーム_Workspace\\作業受付\\20260717-01\\8267.txt",
+      "mode": "split_factor"
+    },
+    {
+      "fchart_code": 10272,
+      "reference_file": "E:\\AI ワークスペース\\CODEX\\ファンドチーム_Workspace\\作業受付\\20260717-01\\10272.txt",
+      "mode": "exact"
+    }
+  ]
+}

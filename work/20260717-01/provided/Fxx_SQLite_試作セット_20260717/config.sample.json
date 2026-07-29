@@ -1,0 +1,12 @@
+{
+  "fxx_source_folder": "C:\\fchart\\fpac",
+  "workspace_folder": "C:\\FundTeam_Workspace",
+  "database_path": "C:\\FundTeam_Workspace\\database\\fund_stock.db",
+  "source_access_mode": "READ_ONLY",
+  "minimum_fxx_number": 50,
+  "validation_symbols": [
+    {"fchart_code": 1308, "reference_file": "1308.txt"},
+    {"fchart_code": 8267, "reference_file": "8267.txt"},
+    {"fchart_code": 10272, "reference_file": "10272.txt"}
+  ]
+}

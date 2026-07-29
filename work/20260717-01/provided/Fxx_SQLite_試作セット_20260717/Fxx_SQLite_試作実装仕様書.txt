@@ -1,0 +1,165 @@
+FChart Fxx → SQLite 試作実装仕様書
+作成日：2026年7月17日
+対象：ファンドチーム専用株価データベース
+版：試作版 0.1
+
+01）目的
+
+FChartが日次更新するWorkspace外のFxx原本ファイルを読み取り専用で参照し、
+ファンドチームWorkspace内にスクリーニング用SQLite株価データベースを構築する。
+
+02）今回の実装対象
+
+第1段階ではF50以降を対象とする。
+対象ファイル例：
+・F50
+・F51～F87
+・F88
+・F89
+・今後追加されるF90以降
+
+F00～F49は長期履歴拡張の第2段階で扱う。
+
+03）原本データのアクセス規則
+
+・Fxx原本フォルダはWorkspace外に置かれる。
+・原本フォルダは読み取り専用とする。
+・一覧取得、属性取得、読込み、ハッシュ計算のみ許可する。
+・作成、上書き、削除、移動、名前変更、フォルダ作成を禁止する。
+・SQLite、ログ、中間ファイル、検査結果はすべてWorkspace内に保存する。
+
+04）確認済み事項
+
+・Fxx先頭6バイトに管理値が存在する。
+・日付は3バイト単位で保持される。
+・日足データは14バイト単位で保持される。
+・日足からOHLCVを復元できる。
+・F88とF89を連結して同一銘柄の連続データを構成できる。
+・普通株、指数、途中上場銘柄で読取り検証を行うための照合資料が揃っている。
+・株式分割銘柄では、原本値とFChart出力値に修正差が生じる可能性がある。
+
+05）重要な設計方針
+
+SQLiteには原本由来の未修正値を保存する。
+修正株価は別列または別テーブルで管理し、原本値を上書きしない。
+
+日足データの主キー：
+fchart_code + trade_date
+
+FChart内部コードと市場銘柄コードは分離して管理する。
+例：
+FChart内部コード 10272
+市場銘柄コード 575A
+
+06）データベース構成
+
+stocks
+・fchart_code
+・market_code
+・security_code
+・security_name
+・security_type
+・is_active
+・source_master
+・created_at
+・updated_at
+
+daily_prices_raw
+・fchart_code
+・trade_date
+・open
+・high
+・low
+・close
+・volume
+・source_fxx
+・source_record_index
+・imported_at
+
+daily_prices_adjusted
+・fchart_code
+・trade_date
+・open_adjusted
+・high_adjusted
+・low_adjusted
+・close_adjusted
+・volume_adjusted
+・adjustment_factor
+・adjustment_source
+・calculated_at
+
+import_files
+・source_file
+・file_size
+・modified_at
+・sha256
+・date_count
+・first_date
+・last_date
+・stock_count
+・import_status
+・imported_at
+
+validation_results
+・validation_id
+・source_file
+・fchart_code
+・test_name
+・expected_count
+・actual_count
+・mismatch_count
+・status
+・details
+・executed_at
+
+07）取込処理
+
+1. 原本フォルダを読み取り専用で走査する。
+2. 対象Fxxのサイズ、更新日時、SHA-256を取得する。
+3. 前回取込済みハッシュと比較する。
+4. 未取込または更新済みファイルのみ解析する。
+5. 日付一覧と銘柄一覧を取得する。
+6. 銘柄別に日足OHLCVを復元する。
+7. SQLiteへUPSERTする。
+8. 件数、重複、OHLC整合、出来高、日付範囲を検査する。
+9. 結果をログへ記録する。
+10. 検査合格後にスクリーニング利用可とする。
+
+08）必須検査
+
+・日付重複がないこと
+・高値 >= 始値、終値、安値
+・安値 <= 始値、終値、高値
+・出来高が負数でないこと
+・同一銘柄・同一日の重複がないこと
+・Fxx境界で欠損または重複がないこと
+・途中上場銘柄の上場前レコードを登録しないこと
+・照合用テキストとの件数およびOHLCV一致
+・株式分割差を「解析失敗」と誤判定しないこと
+
+09）試作版の合格条件
+
+・1308 TOPIX：照合対象期間の全件一致
+・8267 イオン：未修正値の復元と分割差の識別
+・10272 前澤ホールディングス：途中開始期間の全件一致
+・F50、F88、F89の読取りに成功
+・SQLiteの主キー重複ゼロ
+・異常値検査で未説明エラーゼロ
+
+10）試作段階で保留する事項
+
+・F00～F49の全面対応
+・公式な株式分割・併合情報の自動取得
+・財務情報との統合
+・リアルタイム株価
+・スクリーニング条件GUI
+・AIエージェントによる自動分析
+
+11）次工程
+
+・Fxxパーサー実装
+・全銘柄試験取込
+・照合試験
+・SQLite試作DB生成
+・検査報告書作成
+・正式運用仕様への更新

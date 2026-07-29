@@ -1,0 +1,23 @@
+20260717-01 Fxx SQLite試作実装 作業完了報告書
+作業ID: 20260717-01
+実施日時: 2026-07-24 17:35:46
+実装内容: Fxxパーサー、SQLite登録、照合、自動検査、再実行可能なUPSERT処理
+対象Fxx: F50, F51, F52, F53, F54, F55, F56, F57, F58, F59, F60, F61, F62, F63, F64, F65, F66, F67, F68, F69, F70, F71, F72, F73, F74, F75, F76, F77, F78, F79, F80, F81, F82, F83, F84, F85, F86, F87, F88, F89
+登録銘柄数: 6005
+登録日足件数: 15964174
+最古日: 2009-06-08
+最新日: 2026-07-24
+処理時間: 32.78秒
+照合結果:
+  - 1308: PASS expected=386 actual=386 unexplained_mismatch=0 explained_split=0
+  - 8267: PASS expected=386 actual=386 unexplained_mismatch=0 explained_split=171 split_factors=[3.0]
+  - 10272: PASS expected=17 actual=17 unexplained_mismatch=0 explained_split=0
+不一致件数: 0
+警告件数: 1067
+エラー件数: 0
+原本フォルダへの書込み: 0件（プログラムは原本を読取り専用で参照し、成果物はWorkspace内のみ）
+SQLite integrity_check結果: ok
+既存DBバックアップ: E:\AI ワークスペース\CODEX\ファンドチーム_Workspace\database\backup\fund_stock_20260724_173511.db
+既知の制約: F00-F49は対象外。株式分割の公式情報は未連携で、照合ファイルとの倍率関係として検出。
+未解決事項: F89の日付容量300件中、実データ86件以降はゼロ未使用領域として処理。正式仕様への明文化が必要。
+次工程への提案: 分割・併合マスタの追加、F00-F49長期履歴対応、日次更新バッチ化、スクリーニング機能連携。
