@@ -4,493 +4,98 @@
 
 **未承認案・実行禁止**
 
-本書は監査およびNori承認前の作業指示書案である。
-
-本書単独では作業開始、ファイル変更、DB参照、GitHub書込みその他の実行権限を付与しない。
-
----
+本書は監査適合済みの未承認案である。本書単独では、作業開始、実装資産の変更、DB接続、GitHub書込みその他の実行権限を付与しない。Noriの明示承認、ローカル正式指示書の発行、承認済み通信経路での送達・受領確認まで実装を開始しない。
 
 ## 01）目的
 
-SOSIA FANDにおける将来の
+7203について、`daily_prices_raw` の直近100取引日OHLCVを、Data Request → Python Data Gateway → Data Response → Console Command → SOSIA FAND Consoleの経路でローカル表示する最小検証を行う。RAW価格の使用は今回の表示用選択であり、価格補正方針の正式決定ではない。
 
-**ChatGPT → GitHub → Data Gateway → 株価DB → SOSIA FAND Console**
+## 02）役割と権限
 
-連携の基礎となる、ローカル側の最小経路を検証する。
+実行統括はChief Manager「こう」とする。Data Gatewayは新しいAI ROLEではなく、DB読取りを局所化するローカルPython機能モジュールである。Data ManagerのDB更新・品質管理、バフェットの通信・永続記憶管理、Chief Managerの統括、Noriの承認権および投資判断をData Gatewayへ移譲しない。
 
-今回の検証対象は、
+## 03）正式発行と開始条件
 
-**Data Request → Data Gateway → 株価DB → Data Response → Console Command → SOSIA FAND Console**
+Noriが本案の正式発行を明示承認した後、ローカル正規Workspaceの `作業指示/` 配下に指定された正式文書が実在し、正規Workspace・Gitルート・ROLE・WORKFLOW・承認済み通信経路の送達受領を確認できた場合だけ着手できる。GitHub上の本案は参照用であり、実行根拠ではない。
 
-とする。
+## 04）変更許可対象
 
-ChatGPTからGitHubへの自動要求送信、GitHub監視、自動起動は対象外とする。
+新規作成だけを許可する。
 
-検証ケースは、
+- `work/data-gateway-reference/data_gateway.py`
+- `work/data-gateway-reference/export_console_data.py`
+- `work/data-gateway-reference/tests/test_data_gateway.py`
+- `work/data-gateway-reference/tests/fixtures/valid_request.json`
+- `work/data-gateway-reference/tests/fixtures/invalid_request.json`
+- `work/fund-analysis-console-prototype/data/gateway-response.js`
 
-**トヨタ自動車（7203）の直近100営業日の日足OHLCVを取得し、SOSIA FAND Consoleへチャート表示する**
+更新だけを許可する。
 
-1ケースに限定する。
+- `work/fund-analysis-console-prototype/index.html`
+- `work/fund-analysis-console-prototype/market.js`
 
----
+許可する新規ディレクトリは `work/data-gateway-reference/`、`work/fund-analysis-console-prototype/data/`、`成果物/20260916-01_DataGateway最小レファレンス実装/` だけとする。これらまたは生成ファイルが着手前に存在する場合は、上書き・削除・再利用をせず停止する。許可対象外のファイル・ディレクトリの作成、更新、移動、削除を禁止する。
 
-## 02）実行担当
+## 05）事前基準線
 
-実行統括はChief Manager「こう」とする。
+着手前後に `git status --short`、許可対象パスのSHA-256、既存未コミット変更、未追跡ファイルを比較する。現行Console一式は未追跡であり、既存の `tools/fxx_sqlite/config/config.json` の変更を含む既存差分を今回の変更と混在させない。分離できない場合は停止する。
 
-必要に応じ、現行ROLEおよび承認済み作業指示の範囲で補助エージェントを使用できる。
+## 06）対象株価系列
 
-Data Gatewayは新しいAI ROLEではない。
+対象は `daily_prices_raw` の `fchart_code = 7203` とする。使用カラムは `trade_date, open, high, low, close, volume` である。`trade_date` 降順で取得した直近100取引日を、Consoleには日付昇順で渡す。100件不足、日付重複、欠損、非有限値、負値、OHLC不整合は `DATA_SCHEMA_MISMATCH` として失敗させる。`daily_prices_adjusted` は今回使用しない。
 
-株価DBへの読み取り処理を局所化する**ローカル機能モジュール**として扱う。
+## 07）Data Request
 
-Data Gatewayへ以下の責任・権限を移譲しない。
-
-- Data ManagerのDB更新・データ品質管理責任
-- バフェットの現行通信・永続記憶管理責任
-- Chief Managerの実行統括責任
-- Noriの承認権
-- 投資判断または分析判断
-
----
-
-## 03）正式発行と作業開始条件
-
-本案が監査で「適合（承認可）」となり、Noriが明示承認した後にのみ正式発行できる。
-
-正式発行時は、ローカル正規Workspaceの
-
-`作業指示/`
-
-配下へ承認済み正式文書として保存する。
-
-以下のすべてを確認するまで作業を開始しない。
-
-1. Noriの明示承認
-2. ローカル正式作業指示の実在
-3. 正規Workspace確認
-4. Gitルート確認
-5. 承認済み作業指示の内容確認
-6. 現行ROLE・WORKFLOWとの整合確認
-7. 承認済み通信経路による送達・受領確認
-
-GitHub上の本案または参照用ミラーだけを実行根拠としてはならない。
-
----
-
-## 04）事前確認と基準線
-
-着手前に以下を確認し、基準線として記録する。
-
-- `AGENTS.md`
-- `START_HERE.md`
-- 適用ROLE・WORKFLOW
-- 正規Workspace
-- Gitルート
-- `git status`
-- 既存未コミット変更一覧
-- 未追跡ファイル一覧
-- `database/fund_stock.db` の実在
-- `fund_stock.db` のSHA-256
-- DB関連WAL/SHM等の有無
-- SOSIA FAND Consoleの現行ファイル
-- Console関連の既存未コミット・未追跡変更
-- 株価DBの対象テーブル・カラム
-- 対象系列が本作業の仕様に適合すること
-
-既存未コミット変更と今回の変更を安全に分離できない場合は停止する。
-
----
-
-## 05）対象株価系列
-
-今回使用する系列は、DB内に既に存在し、仕様を確認できる**日足OHLCV**に限定する。
-
-最低限、以下を使用する。
-
-- 銘柄コード
-- 日付
-- Open
-- High
-- Low
-- Close
-- Volume
-
-対象：
-
-`7203`
-
-足種：
-
-`D1`
-
-件数：
-
-**直近100営業日**
-
-並び順：
-
-DB取得後、Consoleへは**日付昇順**で渡す。
-
-基準日はDBに存在する最新営業日とする。
-
-### 価格補正
-
-RAW価格・調整済み価格のどちらを採用するかは、既存DBの実在テーブルと現行仕様を確認して決定する。
-
-どちらを使用するか既存仕様から一意に確定できない場合は、DB接続処理を開始せず停止し、Noriへ判断を求める。
-
-推測で補正方式を選択しない。
-
-欠損または異常値を検出した場合も補完せずエラーとして扱う。
-
----
-
-## 06）Data Request
-
-今回はローカルのインプロセス処理として扱う。
-
-常駐プロセス、HTTPサーバー、ソケット通信、ポート待受けは実装しない。
-
-最低限のRequest：
+Data Requestはローカル処理だけに限定する。
 
 ```json
-{
-  "version": "1.0",
-  "request_id": "DR-xxxxxxxx",
-  "action": "get_price_series",
-  "symbol": "7203",
-  "timeframe": "D1",
-  "limit": 100
-}
+{"version":"1.0","request_id":"DR-xxxxxxxx","action":"get_price_series","symbol":"7203","timeframe":"D1","limit":100}
 ```
 
-対応actionは、
+対応actionは `get_price_series` のみ、limitは100固定とする。任意SQL、任意銘柄、任意件数を受け付けない。
 
-`get_price_series`
+## 08）SQLite READ ONLYと保全
 
-のみとする。
+`data_gateway.py` はPython標準 `sqlite3` だけを使用し、絶対POSIXパスから構成する `file:<absolute-path-to-fund_stock.db>?mode=ro&immutable=1` を `sqlite3.connect(uri, uri=True)` で開く方式だけを使用する。通常パス接続、URI無効接続、`rw`・`rwc`、書込み可能接続、接続失敗時の代替・フォールバックを禁止する。
 
-`limit` は今回100固定とし、汎用的な任意件数対応は実装しない。
+接続前後に `database/fund_stock.db`、`database/fund_stock.db-wal`、`database/fund_stock.db-shm`、`database/fund_stock.db-journal` の存在状態、存在時のサイズとSHA-256を同じ手順で記録・比較する。随伴3ファイルが接続前に一つでも存在すれば接続せず停止する。接続後の差異、新規作成または削除も後続処理停止条件とする。
 
----
+## 09）Payload契約
 
-## 07）Data Gateway
-
-Data Gatewayはローカルのインプロセスモジュールとして実装する。
-
-SQL、テーブル名、カラム構造その他のDB固有処理をGateway内部へ隠蔽する。
-
-要求側から任意SQLを受け付けない。
-
-DB接続は**技術的に書込み不能なREAD ONLY方式を必須**とする。
-
-通常の読み書き可能接続で「書かない運用」とすることは禁止する。
-
-READ ONLY接続を実現できない場合は停止する。
-
----
-
-## 08）DB安全条件
-
-DB参照では次を必須とする。
-
-- DB本体を書込み不能で開く
-- DB更新を行わない
-- schema変更を行わない
-- transactionによる書込みを行わない
-- WAL/SHMその他の副作用ファイルを新規作成しない
-- DBコピーを勝手に作成しない
-- DB内容を外部送信しない
-
-実行前後で、
-
-`database/fund_stock.db`
-
-のSHA-256を比較する。
-
-WAL/SHM等についても実行前後の有無を確認する。
-
-差異を検出した場合は技術検証を失敗として停止し、原因を報告する。
-
----
-
-## 09）Data Response
-
-成功Responseには最低限以下を含める。
+成功時の `gateway-response.js` は、次のPayloadだけを保持する。
 
 ```json
-{
-  "version": "1.0",
-  "request_id": "DR-xxxxxxxx",
-  "status": "success",
-  "symbol": "7203",
-  "timeframe": "D1",
-  "count": 100,
-  "data": [
-    {
-      "date": "YYYY-MM-DD",
-      "open": 0,
-      "high": 0,
-      "low": 0,
-      "close": 0,
-      "volume": 0
-    }
-  ]
-}
+{"response":{"version":"1.0","request_id":"DR-xxxxxxxx","status":"success","symbol":"7203","timeframe":"D1","count":100,"data":[]},"command":{"version":"1.0","command_id":"CC-xxxxxxxx","request_id":"DR-xxxxxxxx","action":"show_chart","series":[]}}
 ```
 
-失敗Responseには最低限、
+`command.request_id` は `response.request_id` と一致し、`command.series` は `response.data` と同じ100件のOHLCV配列とする。失敗Responseには `version, request_id, status, error_code, message` を含め、Console Commandを生成しない。エラーコードは `SYMBOL_NOT_FOUND`、`DATA_NOT_FOUND`、`INVALID_REQUEST`、`DB_ERROR`、`UNSUPPORTED`、`DATA_SCHEMA_MISMATCH`、`READ_ONLY_FAILED` とする。
 
-- version
-- request_id
-- status
-- error_code
-- message
+## 10）ローカル生成ファイルとConsole
 
-を含める。
+`export_console_data.py` はPayloadをUTF-8の `window.__DATA_GATEWAY_PAYLOAD__ = <JSON>;` 一文だけとして、`work/fund-analysis-console-prototype/data/gateway-response.js` に排他的な新規作成で出力する。JSON直列化だけを用い、DB値の文字列連結を禁止する。途中失敗、既存検知、出力検証失敗時は上書き・削除・再利用・再実行をせず停止する。
 
-エラーコード：
+静的Browser Consoleは `index.html` がこの生成ファイルを読込み、`market.js` がPayload・Response・Console Command・request_id・系列を完全検証した場合だけ描画する。失敗時は既存message UIへerror codeとmessageを表示し、チャート更新、DB再照会、サンプル系列へのフォールバックを行わない。常駐プロセス、HTTPサーバー、ソケット、ポート待受けを実装しない。
 
-- `SYMBOL_NOT_FOUND`
-- `DATA_NOT_FOUND`
-- `INVALID_REQUEST`
-- `DB_ERROR`
-- `UNSUPPORTED`
-- `DATA_SCHEMA_MISMATCH`
-- `READ_ONLY_FAILED`
+## 11）証跡・成果物・報告
 
----
+実データを含めてよい保存先は生成された `gateway-response.js` だけとする。成果物、通信記録、原報告には価格値を転記せず、ハッシュ、件数、日付範囲、変更一覧、テスト結果だけを記録する。fixtureと成果物内のRequest/Response例は合成・非機密データだけを用いる。実データ、生成ファイル、成果物をGitHubへ送信してはならない。
 
-## 10）Console Command
+原報告はChief Manager ROLEに従いバフェットへ提出する。緊急時またはバフェット利用不能時だけNoriへ直接報告する。AI間通信の採番・記録は適用・個別承認された通信経路がある場合だけ行う。
 
-Consoleへの表示要求は次の形式を基本とする。
+## 12）禁止事項
 
-```json
-{
-  "version": "1.0",
-  "command_id": "CC-xxxxxxxx",
-  "request_id": "DR-xxxxxxxx",
-  "action": "show_chart",
-  "symbol": "7203",
-  "timeframe": "D1",
-  "bars": 100
-}
-```
+DB更新・削除・schema変更、FChart原本変更、ROLE・WORKFLOW・入口文書変更、投資判断、追加指標、大規模リファクタリング、外部API・外部ネットワーク通信、MCP・OpenAI API、GitHub書込み、Git add/stage/commit/push、GitHub Actions、Webhook、監視、自動起動を禁止する。
 
-Request IDを保持し、元のData Requestまで追跡できるようにする。
+## 13）停止条件
 
----
+正規WorkspaceまたはGitルート不一致、正式指示未確認、既存変更との分離不能、許可対象外の差分、DBまたは随伴ファイル差異、READ ONLY接続不能、系列・Payload・Console契約不整合、生成失敗、外部通信の必要性、公開安全性の疑義を検知した場合は停止して報告する。
 
-## 11）試験データと保存
+## 14）完了条件
 
-Request / Response / Console Commandを恒久的な通信ファイルとして運用しない。
+7203のRAW OHLCV 100件を日付昇順で取得し、書込み不能READ ONLY接続、Payload追跡、Console表示、DB・随伴ファイル不変、許可対象外変更なし、既存変更非毀損、必要なローカル証跡保存をすべて確認できた場合だけ技術検証完了候補とする。最終完了承認はNoriが行う。
 
-今回の検証では、
+## 15）修正履歴と監査
 
-- 実行時オブジェクト
-- テストfixture
+初回監査で報告経路、DB保全、変更範囲、価格系列、Console契約を是正対象とした。読取り専用事前調査でRAW系列、静的Console構成、`mode=ro&immutable=1`、既存未追跡資産を確認した。最終修正版はDB URI、随伴ファイル保全、排他的生成、Payload契約、保存先、停止条件を固定した。
 
-としてのみ扱う。
-
-テストfixtureを保存する場合は、今回の実装専用ディレクトリ内に限定する。
-
-GitHubへ株価系列データを保存しない。
-
----
-
-## 12）変更許可対象
-
-正式発行前に、Codexは既存Console構成を調査し、**実際に変更が必要な具体的ファイルパスを確定する**。
-
-正式作業指示には、以下を具体的に列挙する。
-
-- Data Gateway新規ファイル
-- テストファイル
-- fixture保存場所
-- Console変更対象ファイル
-
-正式指示に列挙されていないファイルを変更してはならない。
-
-Console対象ファイルに既存未コミット変更が存在し、安全に分離できない場合は変更せず停止する。
-
----
-
-## 13）外部通信・GitHub
-
-本検証中は以下を禁止する。
-
-- GitHub書込み
-- Git commit
-- Git push
-- GitHub Actions
-- Webhook
-- GitHub監視
-- 外部API
-- 外部ネットワーク通信
-- OpenAI API
-- MCP
-- 外部ストレージへのデータ保存
-
-必要になった場合は作業を停止し、別途承認を求める。
-
----
-
-## 14）その他の禁止事項
-
-以下を行わない。
-
-- `fund_stock.db` の更新・削除・schema変更
-- FChart原本の変更
-- データ補正方式の変更
-- ROLE変更
-- WORKFLOW変更
-- 入口文書変更
-- AI間通信運用変更
-- 永続記憶運用変更
-- 投資判断
-- 売買評価
-- RSI等の追加指標実装
-- 大規模リファクタリング
-- 既存未コミット変更の上書き・混入
-
----
-
-## 15）報告経路
-
-報告経路は現行ROLEおよびAI間通信運用に従う。
-
-本作業指示によって、恒久的または一時的な独自の報告経路を新設しない。
-
-現行ROLE・AI間通信運用との不整合により報告不能となる場合は、独自判断でNori直接報告へ切り替えず、停止条件として扱う。
-
----
-
-## 16）検証シナリオ
-
-入力：
-
-```text
-symbol: 7203
-timeframe: D1
-limit: 100
-action: show_chart
-```
-
-確認経路：
-
-```text
-Data Request
-     ↓
-Data Gateway
-     ↓
-fund_stock.db（READ ONLY）
-     ↓
-Data Response
-     ↓
-Console Command
-     ↓
-SOSIA FAND Console
-```
-
-確認事項：
-
-1. Request検証
-2. 7203認識
-3. READ ONLY接続成功
-4. 指定系列の取得
-5. 100営業日取得
-6. OHLCV項目確認
-7. 日付昇順への整列
-8. Response生成
-9. Console Command生成
-10. Console表示
-11. request_idによる追跡
-12. DB非変更確認
-13. 許可対象外ファイル非変更確認
-
----
-
-## 17）明示的停止条件
-
-以下のいずれかを検出した場合は停止する。
-
-- 正規WorkspaceまたはGitルート不一致
-- 承認済み正式指示を確認できない
-- 許可対象ファイルを確定できない
-- 既存変更を安全に分離できない
-- DBをREAD ONLYで開けない
-- DB schemaが想定と一致しない
-- RAW/調整済み系列を一意に決定できない
-- DBハッシュが実行前後で変化した
-- WAL/SHM等の想定外ファイルが生成された
-- Consoleインターフェースが想定と一致しない
-- 許可対象外ファイル変更が必要になった
-- FChart原本への影響を否定できない
-- 外部通信が必要になった
-- 公開安全性に疑義が生じた
-
----
-
-## 18）成果物
-
-最低限以下を提出する。
-
-- Data Gateway試作コード
-- テストコード
-- Request実例
-- Response実例
-- Console Command実例
-- Console表示確認結果
-- 変更ファイル一覧
-- 着手前Git差分一覧
-- 完了後Git差分一覧
-- DB実行前SHA-256
-- DB実行後SHA-256
-- WAL/SHM等確認結果
-- テスト結果
-- 未実施事項
-- 問題点
-- 制約
-- 次段階への改善候補
-- 作業完了原報告
-
----
-
-## 19）技術検証完了条件
-
-以下をすべて満たした場合に技術検証完了候補とする。
-
-- 7203の日足100営業日OHLCVを取得できた
-- READ ONLY接続が技術的に保証されている
-- RequestからConsoleまで追跡可能
-- Consoleへチャートを表示できた
-- テスト結果が保存されている
-- DBハッシュが実行前後で一致した
-- WAL/SHM等の想定外副作用がない
-- FChart原本を変更していない
-- 許可対象外ファイルを変更していない
-- 既存変更を毀損していない
-- 必要な証跡が提出されている
-
-最終完了承認はNoriが行う。
-
----
-
-## 20）本作業後に判断する事項
-
-今回の技術検証後に、別途判断する。
-
-1. Data Gateway正式採用
-2. Gateway API仕様
-3. GitHub Gateway領域
-4. ChatGPT → GitHub → Gateway連携
-5. GitHub監視
-6. ChatGPTのGitHub書込み範囲
-7. ソロスROLE
-8. AI間通信・永続記憶管理の再設計
-9. RSI等の指標対応
-10. スクリーニング機能
-11. 常駐サービス化またはAPI化
-
-これらは今回確定しない。
+カンによる最終独立再監査判定は **適合（承認可）** である。この判定は正式発行、実装開始、DB操作、通信開始または作業全体完了を承認しない。
