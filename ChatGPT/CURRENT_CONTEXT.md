@@ -19,73 +19,68 @@ SOSIA FANDを、ChatGPTとCodexの長所を併用するAI組織としてレフ�
 - Data Gatewayは原則読み取り専用で、事実・数値・計算を担当し、投資判断そのものは担当しない。
 - Noriの方針として、完成形を議論だけで詰めすぎず、出来ることから最小レファレンス実装で進め、不具合があれば都度改善する。
 
-## 想定構造
+## Data Gateway最小レファレンス実装
 
-```text
-Nori
-├─ ChatGPT「チャット」
-│   └─ SOSIA FANDシステム構築アドバイザー
-│
-├─ ChatGPT「バフェット」
-│   └─ 総合・俯瞰・対話型の投資相談
-│
-└─ Codex「ソロス」
-    └─ データ・テクニカル・チャート・コンソール連携
-         ↓
-      Data Gateway
-         ↓
-      株価DB
-```
+第1段階のローカル最小レファレンス実装は完了。
 
-ChatGPT側とCodex側の共有・受け渡しにはGitHubを利用する。
+最終独立監査は **適合（完了承認可）**。
 
-## Data Gatewayの基本方針
+確認済み内容:
 
-- ChatGPT側はSQLではなく、必要な情報をData Requestとして要求する。
-- Codex/Data Gatewayが株価DBから必要なデータを取得する。
-- 取得結果は標準化したData Responseとして返す。
-- DB更新・削除・構造変更はGatewayの通常責務に含めない。
-- 将来MCPやAPIへ切り替える場合にも、Request/Response仕様を再利用できる形を目指す。
+- 対象: トヨタ自動車 `7203`
+- 足種: 日足
+- 件数: 100取引日固定
+- 対象系列: `daily_prices_raw`
+- Python GatewayからSQLiteへREAD ONLY接続
+- 接続方式: `mode=ro&immutable=1`
+- `Data Request → Gateway → Response → gateway-response.js → 静的Browser Console` の経路を確認
+- Consoleは7203・日足・100本固定
+- 表示名とPayload対象が一致
+- 実ブラウザーでローソク足・出来高チャートの正常表示を確認
+- DB SHA-256は実行前後で一致
+- WAL / SHM / journalの副作用なし
 
-## コンソール連携の検討状況
-
-- ChatGPT PlusだけでChatGPT本体をSOSIA FANDコンソールへ埋め込むことは前提にしない。
-- APIによる専用チャットUIは別課金になるため、現段階では採用しない。
-- 代替として、ChatGPT → GitHub → ローカルGateway/Console のコマンド中継を検討している。
-- 例として、ChatGPT側バフェットから「トヨタの日足チャートをコンソールに表示して」と要求し、GitHub上の命令をコンソール側が処理する構成は技術的に可能と見込んでいる。
-- ただし、まだ実装・正式仕様化はしていない。
+今回の `Python Data Gateway → ローカル生成データ → 静的Console` は最小レファレンスであり、恒久アーキテクチャではない。
 
 ## 次に進める作業
 
-最小レファレンス設計を具体化する。
-
-第一候補は「トヨタの日足チャート表示」を題材に、次の最小経路を確認すること。
+次の本命は、まだ未実装の
 
 ```text
-ChatGPT / GitHub
-    ↓
-Codex / Data Gateway
-    ↓
-株価DB
-    ↓
-SOSIA FAND Console
+ChatGPT
+   ↓
+GitHub
+   ↓
+Data Gateway
 ```
 
-この実装・検証を通じて、必要な通信形式、権限、エラー処理、コンソール側の受信方式を決めていく。
+部分の設計・検証。
+
+検討候補:
+
+- GitHub上のData Request / Data Response / Console Command保存場所・形式
+- ChatGPTからGitHubへの要求書込み権限と運用
+- Codex側でGitHub要求を検知する方法
+- 手動トリガーを維持するか、自動監視へ進むか
+- 将来MCP/APIへ移行可能なRequest/Response仕様
 
 ## 未決事項
 
 - ChatGPT側バフェットの正式なROLEまたはプロジェクト配置方法。
 - Codex側ソロスの正式ROLE名・責務・権限。
-- Data Gatewayの正式仕様。
-- GitHub上のData Request / Data Response / Console Commandの保存場所・形式。
-- コンソールがGitHub命令を検知・処理する方法。
+- Data Gatewayの正式仕様化。
+- GitHub上のData Request / Data Response / Console Commandの正式保存場所・形式。
+- コンソール/GatewayがGitHub命令を検知・処理する正式方式。
 - 旧 `ROLE_FUND_バフェット_Advisor.md` と関連WORKFLOWの正式改定範囲。
 - AI間通信・永続記憶管理の新しい責任主体。
 
 ## ChatGPTスレッド引き継ぎ
 
 直前の詳細は次を参照する。
+
+- `ChatGPT/HANDOVER/20260916-1615_DataGateway最小実装完了.md`
+
+その前段の設計経緯:
 
 - `ChatGPT/HANDOVER/20260916-0110_投資相談AI配置_DataGateway検討.md`
 
@@ -99,5 +94,5 @@ ChatGPTの直接書込み範囲は、承認済み運用に基づき次に限定�
 ## 注意事項
 
 - GitHub上の規程文書はローカルWorkspace正本の参照用ミラー。
-- Codex側規程の正式改定はまだ行っていない。
-- 正式変更時は必要に応じてローカル正本との一致確認が必要。
+- 正式規程・ROLE・WORKFLOWの改定は別途Nori承認が必要。
+- 今回の完了承認は、GitHub自動連携、API化、常駐化、MCP、追加指標、スクリーニング等の承認を意味しない。
