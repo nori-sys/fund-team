@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "request_id": "DG-TEST-001",
+  "request_type": "price_history",
+  "symbol": "7203",
+  "timeframe": "1D",
+  "limit": 100,
+  "price_series": "daily_prices_raw",
+  "purpose": "ChatGPT-GitHub-DataGateway minimal round-trip validation"
+}
