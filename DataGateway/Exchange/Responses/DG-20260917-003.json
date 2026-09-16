@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "request_id": "DG-20260917-003",
+  "status": "error",
+  "error_code": "SYMBOL_NOT_FOUND",
+  "message": "Requested symbol was not found."
+}

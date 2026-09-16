@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "request_id": "DG-20260917-006",
+  "status": "error",
+  "error_code": "UNSUPPORTED_PRICE_SERIES",
+  "message": "Price series is not supported."
+}

@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "request_id": "DG-20260917-001",
+  "request_type": "price_history",
+  "symbol": "7203",
+  "timeframe": "1D",
+  "limit": 50,
+  "price_series": "daily_prices_raw"
+}
