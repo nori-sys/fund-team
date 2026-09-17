@@ -4,7 +4,7 @@
 
 SOSIA FANDを、ChatGPTとCodexの長所を併用するAI組織としてレファレンス設計し、最小実装から検証・改善する。
 
-現在は、Data Gateway可変Request化 Phase 2について、月足 `1M` の最小設計・独立監査・Nori承認まで完了し、承認済み正式仕様とPhase 2修正版作業指示をGitHubへ発行した。次はCodexでPhase 2修正版の実装・検証・独立監査を行う段階。
+Data Gateway可変Request化 Phase 2修正版は、実装・検証・独立監査まで完了した。カンの最終独立監査は `適合（承認可）`、未決事項なし。次の主要テーマは、ChatGPT→Codexの作業指示とCodex→ChatGPTの作業報告をGitHub経由で標準化し、他プロジェクトへ展開可能な共通WORKFLOWとして規定すること。
 
 ## 確定・合意した方向
 
@@ -18,142 +18,115 @@ SOSIA FANDを、ChatGPTとCodexの長所を併用するAI組織としてレフ�
 - GitHubは共有・参照・受け渡し層であり、ローカルWorkspace正本を置き換えない。
 - 自動監視、自動検知、自動起動、Webhook、GitHub Actions、APIサーバー、常駐化、MCPは現段階では未導入。起動はNoriの明示指示による手動トリガーを維持する。
 
-## Data Gateway Phase 1
+## Data Gateway Phase 2修正版 完了結果
 
-Phase 1は完了済み。
-
-- `symbol` 可変
-- `limit` 可変
-- `limit` 許可値: `20 / 50 / 100 / 200 / 500`
-- `timeframe = 1D` 固定
-- `price_series = daily_prices_raw` 固定
-- SQLプレースホルダー束縛
-- 任意SQL・任意テーブル・任意コマンド指定不可
-- 正常系・異常系検証成功
-- DB SHA-256前後一致
-- WAL / SHM / journal副作用なし
-- カン最終独立監査: `適合（承認可）`
-
-Phase 1検証結果commit:
-
-`8b57d089c388e3635403e6950ef41646ae441a1b`
-
-## Phase 2初版停止結果
-
-初版正式指示:
-
-`作業指示/20260917-0154_SOSIA_FAND_DataGateway可変Request化_Phase2_作業指示書.md`
-
-初版発行commit:
-
-`f9d43cafb9f6d7a4252d076deaad74885d3678e5`
-
-実装前確認により、既存週足仕様は確認できたが月足 `1M` の既存正式仕様が存在せず、推測実装禁止の停止条件により実装開始前で停止した。
-
-確認済み週足仕様:
-
-- `weekly_prices`
-- timeframe: `1W / WEEK / MONDAY_TO_SUNDAY`
-- 月曜開始・日曜終了
-- 生成元: `daily_prices_raw`
-- O=最初の取引日、C=最後の取引日、H=max、L=min、V=sum
-- 生成実装: `tools/fxx_sqlite/src/generate_timeframes.py`
-
-## 月足 `1M` 最小設計
-
-月足仕様最小設計をCodexで実施し、カン最終独立監査は `適合（承認可）`。
-
-Noriはチャットの推奨4点をすべて承認した。
-
-確定事項:
-
-1. 保存先は専用 `monthly_prices`。
-2. 月次Payloadの `date` は `period_start`。
-3. `is_complete` 列は追加せず、`source_daily_max_date < period_end` の場合にConsumer側で暫定として扱う。
-4. 既存週足ウォーターマーク方式の統一はPhase 2では行わず、別作業とする。
-
-正式月足仕様:
-
-- timeframe: `1M`
-- 期間: 暦月1日〜末日
-- 生成元: `daily_prices_raw`
-- Open: 月内最初の取引日の始値
-- High: 月内最高値
-- Low: 月内最安値
-- Close: 月内最後の取引日の終値
-- Volume: 月内出来高合計
-- 主キー候補: `(fchart_code, timeframe_code, period_start)`
-- `timeframes` 登録: `1M / MONTH / 1 / CALENDAR_MONTH_FIRST_TO_LAST`
-- Gatewayでは集計せず、保存済み派生月足をREAD ONLY参照
-- 日足取込後、手動起動の派生足生成処理で影響月のみ再集計
-- 差分境界: `last_generated_at <= imported_at < run_upper_bound`
-- `run_upper_bound` は処理開始時のSQLite `CURRENT_TIMESTAMP` を固定
-- UPSERTとウォーターマーク更新は同一トランザクションで成功時のみcommit
-
-承認済み正式仕様:
-
-`成果物/20260917-0947_SOSIA_FAND_月足1M_正式仕様.md`
-
-仕様発行commit:
-
-`8f30546a6a7e475ee109a3e65ed94f243574df66`
-
-## Phase 2修正版
-
-正式発行済み:
+正式指示:
 
 `作業指示/20260917-0947_SOSIA_FAND_DataGateway可変Request化_Phase2_修正版_作業指示書.md`
 
-発行commit:
+承認済み月足仕様:
 
-`027b3e8c3d87e5b698ba97470d301daf93094f0e`
+`成果物/20260917-0947_SOSIA_FAND_月足1M_正式仕様.md`
 
-実装対象:
+実装・検証結果:
 
 - `monthly_prices` 追加
-- `timeframes` に `1M` 追加
-- 承認済み月足仕様に基づく生成・差分更新
-- 既存Gatewayを `1D / 1W / 1M` 対応へ拡張
-- Gateway自身ではOHLCV再集計しない
-- Gateway READ ONLY維持
+- `timeframes` に `1M` 定義追加
+- `1M` は `daily_prices_raw` から暦月単位で生成
+- OHLCVは承認済み月足仕様どおり
+- 月足差分生成は `BEGIN IMMEDIATE`
+- SQLite `CURRENT_TIMESTAMP` を `run_upper_bound` として固定
+- 差分境界は `last_generated_at <= imported_at < run_upper_bound`
+- UPSERTとウォーターマーク更新は同一トランザクションで成功時のみcommit
+- Gatewayは `1D / 1W / 1M` を固定SQLマッピングでREAD ONLY参照
+- 任意SQL・任意テーブル指定不可
+- 週足・月足Payloadは `date=period_start`、`period_end`、`source_daily_max_date` を返す
+- 暫定月は `source_daily_max_date < period_end` で判別可能
+- 月足生成件数 `824,859`
+- RAW日足の銘柄・暦月グループ数と月足件数が一致
+- `daily_prices_raw` と `weekly_prices` は生成前バックアップとの差分0
+- 7203の2026年8月は完了月、9月は暫定月として確認
+- Gateway正常系・異常系検証成功
+- 再生成時の月足全列差分0、影響月0件
+- 一時fixtureで新規日足後、影響月のみ差分再生成を確認
+- WAL / SHM / journal 不在
+- 最終DB SHA-256: `A53327824BF40A10A07D194CB55FF1BEBAD7C98B44B1C1965BDA0A3E3D7E8644`
+- カン最終独立監査: `適合（承認可）`
+- 未決事項なし
 
-変更しない対象:
+Codexは、正式指示に保存先・公開範囲指定がなかったため、作業報告書のGitHub書込みは実施していない。
 
-- 既存週足ウォーターマーク方式
-- Console
-- ROLE
-- WORKFLOW
-- 自動監視・自動起動
-- Webhook / GitHub Actions / APIサーバー / MCP / 常駐処理
-- 汎用期間テーブルへの移行
+## 作業指示書・作業報告書の共通運用検討
 
-## 次に進める作業
+Noriとチャットは、今後、Codexの作業結果をチャット本文で手動転送するのではなく、GitHub上の作業報告書としてCodexが保存し、ChatGPTが直接読む運用へ移行する方針で合意した。
 
-CodexへPhase 2修正版の実行を指示する。
+基本フロー:
 
-実施フロー:
+`ChatGPT → GitHub作業指示書 → Codex → GitHub作業報告書 → ChatGPTレビュー`
 
-`こう実装・検証 → カン独立監査 → 要修正ならこう是正 → カン再監査 → 適合（承認可） → Nori最終確認`
+この運用はSOSIA FAND固有ではなく、他プロジェクトでも共通利用する前提で、`規程/WORKFLOW/指示書・報告書運用.md` として規定する方針。
 
-停止条件に該当する場合は推測せず停止する。
+### 命名責任
 
-## GitHub・作業指示運用
+- 指示書の起点はChatGPTが作成する指示書案。
+- 指示書案の時点でファイル名を決定する。
+- Codex側で監査・修正して `承認可` まで整え、Nori承認後に正式指示書とする。
+- 指示書・作業報告書の命名責任は原則ChatGPT側に置く。
+- Codexは対応する作業指示書の基底名を継承して作業報告書を作成する。
 
-- `ChatGPT/作業指示案/` は未承認案。
-- Nori承認後のみ正式な `作業指示/` に発行する。
-- 作業指示書発行時はCodexチャットへ貼る短い指示文も同時表示する。
-- GitHubはローカルWorkspace正本を置き換えない。
-- force push、remote変更、Git恒久設定変更、認証変更等はNoriの明示承認なしに行わない。
+### プロジェクトID
 
-## 未決事項
+- プロジェクトIDはNoriが各プロジェクトごとに付与する。
+- SOSIA FANDのプロジェクトIDは `FAND`。
 
-- Phase 2修正版の実装・検証結果。
-- Data Gatewayの恒久アーキテクチャ。
-- 週足ウォーターマーク方式を将来同じ安全境界契約へ統一するか。
-- 正規Workspace `main` とGitHub `main` の将来的な安全な同期方法。
+### 現時点の命名案
+
+作業指示書:
+
+`YYYYMMDD-HHMM_プロジェクトID_件名_作業指示書.md`
+
+例:
+
+`20260917-2322_FAND_DataGateway_Phase2_作業指示書.md`
+
+1通目の作業報告書:
+
+`YYYYMMDD-HHMM_プロジェクトID_件名_作業報告書.md`
+
+例:
+
+`20260917-2322_FAND_DataGateway_Phase2_作業報告書.md`
+
+同一作業指示に対する2通目以降の作業報告書:
+
+`YYYYMMDD-HHMM-NN_プロジェクトID_件名_作業報告書.md`
+
+例:
+
+`20260917-2322-02_FAND_DataGateway_Phase2_作業報告書.md`
+
+`20260917-2322-03_FAND_DataGateway_Phase2_作業報告書.md`
+
+`-NN` は作業番号ではなく、同一作業指示に対する第2報以降の報告連番とする方向。差戻し、再監査、追加修正により作業指示書と報告書が1対1にならないことを前提とする。
+
+### 次に決めること
+
+配置フォルダを決める。
+
+検討対象:
+
+- 指示書案の配置先
+- 正式作業指示書の配置先
+- 作業報告書の配置先
+- 差戻し・再報告時の配置と履歴保持
+- 他プロジェクト共通で使えるフォルダ構成
+- 既存 `作業指示/`、`成果物/`、`作業履歴/`、`ChatGPT/作業指示案/` との整合
+
+配置フォルダ決定後、`規程/WORKFLOW/指示書・報告書運用.md` の規程案を作成し、既存 `GitHub連携運用.md`、`フォルダ構成運用.md` 等との整合確認・必要な改定範囲を整理する。
 
 ## 注意事項
 
-- GitHub上の文書はローカルWorkspace正本の共有・参照ミラーとして扱う。
+- GitHub上の規程文書はローカルWorkspace正本の参照用ミラー。
 - 正式規程・ROLE・WORKFLOW変更にはNori承認が必要。
-- 月足 `1M` 仕様はNori承認済み。
+- 現時点の「指示書・報告書運用」は検討中であり、正式規程ではない。
+- 配置フォルダはまだ未決定。
