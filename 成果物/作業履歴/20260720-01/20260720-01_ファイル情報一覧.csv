@@ -1,0 +1,4 @@
+﻿file,path,size_bytes,last_write_time_local,attributes_note,readonly_open_ok,open_error
+info.dat,D:\ForexTester6\data\History\USDJPY\info.dat,320,2025-01-16 19:22:59,Archive (PowerShell表示); Python stat mode 0o100666,True,
+Bars.dat,D:\ForexTester6\data\History\USDJPY\Bars.dat,406978564,2026-07-10 22:10:53,Archive (PowerShell表示); Python stat mode 0o100666,True,
+ticks.dat,D:\ForexTester6\data\History\USDJPY\ticks.dat,11783800004,2026-07-10 22:11:28,Archive (PowerShell表示); Python stat mode 0o100666,True,

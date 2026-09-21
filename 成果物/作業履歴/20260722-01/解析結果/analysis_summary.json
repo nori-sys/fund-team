@@ -1,0 +1,1029 @@
+{
+  "generated_at": "2026-07-22T02:16:21",
+  "files": [
+    {
+      "file": "kigyo.dat",
+      "original_path": "C:\\fchart\\gyoseki\\kigyo.dat",
+      "copy_path": "作業履歴\\20260722-01\\解析用コピー\\kigyo.dat",
+      "size": 8610226,
+      "mtime_copy": "2026-05-04T03:05:02",
+      "sha256_original": "d204fe84064b1f384ea54a7f383c76cd88c04cf8e2541fa8bf33137b3886f94f",
+      "sha256_copy": "d204fe84064b1f384ea54a7f383c76cd88c04cf8e2541fa8bf33137b3886f94f",
+      "hash_match": "True",
+      "head_256_hex": "E9 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 04 39 33 30 33 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 04 39 34 30 33 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 04 39 35 30 33 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "tail_256_hex": "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "zero_runs_top": "[{\"offset\": 3800614, \"length\": 22221}, {\"offset\": 3896082, \"length\": 16460}, {\"offset\": 3942993, \"length\": 13168}, {\"offset\": 3739712, \"length\": 11522}, {\"offset\": 3920772, \"length\": 11522}, {\"offset\": 3713376, \"length\": 7407}, {\"offset\": 3829419, \"length\": 7407}, {\"offset\": 3844233, \"length\": 6584}]"
+    },
+    {
+      "file": "kigyo2.dat",
+      "original_path": "C:\\fchart\\gyoseki\\kigyo2.dat",
+      "copy_path": "作業履歴\\20260722-01\\解析用コピー\\kigyo2.dat",
+      "size": 3452460,
+      "mtime_copy": "2026-05-04T03:05:02",
+      "sha256_original": "e834e920600ebaa942f255ecd75b4f091ee3ec627b97a7bf010615468deea50c",
+      "sha256_copy": "e834e920600ebaa942f255ecd75b4f091ee3ec627b97a7bf010615468deea50c",
+      "hash_match": "True",
+      "head_256_hex": "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "tail_256_hex": "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "zero_runs_top": "[{\"offset\": 1659520, \"length\": 619460}, {\"offset\": 3131320, \"length\": 321140}, {\"offset\": 2333710, \"length\": 112250}, {\"offset\": 2833660, \"length\": 62420}, {\"offset\": 2570320, \"length\": 54170}, {\"offset\": 3007570, \"length\": 52850}, {\"offset\": 2456470, \"length\": 48890}, {\"offset\": 2797690, \"length\": 35690}]"
+    },
+    {
+      "file": "kigyo3.dat",
+      "original_path": "C:\\fchart\\gyoseki\\kigyo3.dat",
+      "copy_path": "作業履歴\\20260722-01\\解析用コピー\\kigyo3.dat",
+      "size": 3452460,
+      "mtime_copy": "2026-05-04T03:05:02",
+      "sha256_original": "3e2d2aeecce7079532dd17c25d1cb752860c191327d11d32e402954b274f5a36",
+      "sha256_copy": "3e2d2aeecce7079532dd17c25d1cb752860c191327d11d32e402954b274f5a36",
+      "hash_match": "True",
+      "head_256_hex": "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "tail_256_hex": "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "zero_runs_top": "[{\"offset\": 1659537, \"length\": 619443}, {\"offset\": 3131320, \"length\": 321140}, {\"offset\": 2334040, \"length\": 111920}, {\"offset\": 2833660, \"length\": 62420}, {\"offset\": 2570320, \"length\": 53840}, {\"offset\": 3007570, \"length\": 52190}, {\"offset\": 2456486, \"length\": 48214}, {\"offset\": 2797690, \"length\": 35690}]"
+    },
+    {
+      "file": "Zaimu.dat",
+      "original_path": "C:\\fchart\\gyoseki\\Zaimu.dat",
+      "copy_path": "作業履歴\\20260722-01\\解析用コピー\\Zaimu.dat",
+      "size": 46429677,
+      "mtime_copy": "2026-05-04T03:05:02",
+      "sha256_original": "161adec67a70607e4f0dfd29ea96d561786368d396ae2d808c5057cc46ce7eec",
+      "sha256_copy": "161adec67a70607e4f0dfd29ea96d561786368d396ae2d808c5057cc46ce7eec",
+      "hash_match": "True",
+      "head_256_hex": "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "tail_256_hex": "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "zero_runs_top": "[{\"offset\": 24604448, \"length\": 9158992}, {\"offset\": 34605740, \"length\": 1631534}, {\"offset\": 42013524, \"length\": 927444}, {\"offset\": 44592135, \"length\": 775915}, {\"offset\": 38108910, \"length\": 768458}, {\"offset\": 36421043, \"length\": 686473}, {\"offset\": 41480187, \"length\": 531155}, {\"offset\": 23855617, \"length\": 467164}]"
+    }
+  ],
+  "record_candidates": {
+    "kigyo.dat": [
+      {
+        "header": 3280,
+        "record_length": 68,
+        "record_count": 126572,
+        "tail": 50,
+        "score": 2.55,
+        "code_hits_first64": 161
+      },
+      {
+        "header": 3348,
+        "record_length": 68,
+        "record_count": 126571,
+        "tail": 50,
+        "score": 2.55,
+        "code_hits_first64": 162
+      },
+      {
+        "header": 3556,
+        "record_length": 60,
+        "record_count": 143444,
+        "tail": 30,
+        "score": 2.545,
+        "code_hits_first64": 164
+      },
+      {
+        "header": 3284,
+        "record_length": 68,
+        "record_count": 126572,
+        "tail": 46,
+        "score": 2.545,
+        "code_hits_first64": 161
+      },
+      {
+        "header": 3352,
+        "record_length": 68,
+        "record_count": 126571,
+        "tail": 46,
+        "score": 2.545,
+        "code_hits_first64": 162
+      },
+      {
+        "header": 3420,
+        "record_length": 68,
+        "record_count": 126570,
+        "tail": 46,
+        "score": 2.545,
+        "code_hits_first64": 162
+      },
+      {
+        "header": 3488,
+        "record_length": 68,
+        "record_count": 126569,
+        "tail": 46,
+        "score": 2.545,
+        "code_hits_first64": 162
+      },
+      {
+        "header": 3556,
+        "record_length": 68,
+        "record_count": 126568,
+        "tail": 46,
+        "score": 2.545,
+        "code_hits_first64": 162
+      },
+      {
+        "header": 3624,
+        "record_length": 68,
+        "record_count": 126567,
+        "tail": 46,
+        "score": 2.545,
+        "code_hits_first64": 161
+      },
+      {
+        "header": 3008,
+        "record_length": 68,
+        "record_count": 126576,
+        "tail": 50,
+        "score": 2.545,
+        "code_hits_first64": 159
+      },
+      {
+        "header": 3076,
+        "record_length": 68,
+        "record_count": 126575,
+        "tail": 50,
+        "score": 2.545,
+        "code_hits_first64": 159
+      },
+      {
+        "header": 3144,
+        "record_length": 68,
+        "record_count": 126574,
+        "tail": 50,
+        "score": 2.545,
+        "code_hits_first64": 159
+      },
+      {
+        "header": 3212,
+        "record_length": 68,
+        "record_count": 126573,
+        "tail": 50,
+        "score": 2.545,
+        "code_hits_first64": 160
+      },
+      {
+        "header": 3416,
+        "record_length": 68,
+        "record_count": 126570,
+        "tail": 50,
+        "score": 2.545,
+        "code_hits_first64": 162
+      },
+      {
+        "header": 3484,
+        "record_length": 68,
+        "record_count": 126569,
+        "tail": 50,
+        "score": 2.545,
+        "code_hits_first64": 162
+      },
+      {
+        "header": 3552,
+        "record_length": 68,
+        "record_count": 126568,
+        "tail": 50,
+        "score": 2.545,
+        "code_hits_first64": 162
+      },
+      {
+        "header": 3620,
+        "record_length": 68,
+        "record_count": 126567,
+        "tail": 50,
+        "score": 2.545,
+        "code_hits_first64": 161
+      },
+      {
+        "header": 3496,
+        "record_length": 60,
+        "record_count": 143445,
+        "tail": 30,
+        "score": 2.54,
+        "code_hits_first64": 164
+      },
+      {
+        "header": 3616,
+        "record_length": 60,
+        "record_count": 143443,
+        "tail": 30,
+        "score": 2.54,
+        "code_hits_first64": 163
+      },
+      {
+        "header": 3676,
+        "record_length": 60,
+        "record_count": 143442,
+        "tail": 30,
+        "score": 2.54,
+        "code_hits_first64": 162
+      },
+      {
+        "header": 2740,
+        "record_length": 68,
+        "record_count": 126580,
+        "tail": 46,
+        "score": 2.54,
+        "code_hits_first64": 161
+      },
+      {
+        "header": 2808,
+        "record_length": 68,
+        "record_count": 126579,
+        "tail": 46,
+        "score": 2.54,
+        "code_hits_first64": 161
+      },
+      {
+        "header": 2876,
+        "record_length": 68,
+        "record_count": 126578,
+        "tail": 46,
+        "score": 2.54,
+        "code_hits_first64": 160
+      },
+      {
+        "header": 3012,
+        "record_length": 68,
+        "record_count": 126576,
+        "tail": 46,
+        "score": 2.54,
+        "code_hits_first64": 159
+      },
+      {
+        "header": 3080,
+        "record_length": 68,
+        "record_count": 126575,
+        "tail": 46,
+        "score": 2.54,
+        "code_hits_first64": 159
+      },
+      {
+        "header": 3148,
+        "record_length": 68,
+        "record_count": 126574,
+        "tail": 46,
+        "score": 2.54,
+        "code_hits_first64": 159
+      },
+      {
+        "header": 3216,
+        "record_length": 68,
+        "record_count": 126573,
+        "tail": 46,
+        "score": 2.54,
+        "code_hits_first64": 160
+      },
+      {
+        "header": 3240,
+        "record_length": 60,
+        "record_count": 143449,
+        "tail": 46,
+        "score": 2.54,
+        "code_hits_first64": 161
+      },
+      {
+        "header": 3300,
+        "record_length": 60,
+        "record_count": 143448,
+        "tail": 46,
+        "score": 2.54,
+        "code_hits_first64": 162
+      },
+      {
+        "header": 3360,
+        "record_length": 60,
+        "record_count": 143447,
+        "tail": 46,
+        "score": 2.54,
+        "code_hits_first64": 163
+      }
+    ],
+    "kigyo2.dat": [
+      {
+        "header": 1260,
+        "record_length": 1600,
+        "record_count": 2157,
+        "tail": 0,
+        "score": 3.835,
+        "code_hits_first64": 152
+      },
+      {
+        "header": 2860,
+        "record_length": 1600,
+        "record_count": 2156,
+        "tail": 0,
+        "score": 3.835,
+        "code_hits_first64": 152
+      },
+      {
+        "header": 2860,
+        "record_length": 3200,
+        "record_count": 1078,
+        "tail": 0,
+        "score": 3.815,
+        "code_hits_first64": 147
+      },
+      {
+        "header": 3628,
+        "record_length": 1024,
+        "record_count": 3368,
+        "tail": 0,
+        "score": 3.79,
+        "code_hits_first64": 133
+      },
+      {
+        "header": 2604,
+        "record_length": 1024,
+        "record_count": 3369,
+        "tail": 0,
+        "score": 3.78,
+        "code_hits_first64": 132
+      },
+      {
+        "header": 556,
+        "record_length": 1024,
+        "record_count": 3371,
+        "tail": 0,
+        "score": 3.775,
+        "code_hits_first64": 131
+      },
+      {
+        "header": 1580,
+        "record_length": 1024,
+        "record_count": 3370,
+        "tail": 0,
+        "score": 3.775,
+        "code_hits_first64": 131
+      },
+      {
+        "header": 460,
+        "record_length": 2000,
+        "record_count": 1726,
+        "tail": 0,
+        "score": 3.76,
+        "code_hits_first64": 141
+      },
+      {
+        "header": 2460,
+        "record_length": 2000,
+        "record_count": 1725,
+        "tail": 0,
+        "score": 3.76,
+        "code_hits_first64": 141
+      },
+      {
+        "header": 460,
+        "record_length": 4000,
+        "record_count": 863,
+        "tail": 0,
+        "score": 3.75,
+        "code_hits_first64": 136
+      },
+      {
+        "header": 1260,
+        "record_length": 2400,
+        "record_count": 1438,
+        "tail": 0,
+        "score": 3.745,
+        "code_hits_first64": 141
+      },
+      {
+        "header": 3660,
+        "record_length": 2400,
+        "record_count": 1437,
+        "tail": 0,
+        "score": 3.74,
+        "code_hits_first64": 140
+      },
+      {
+        "header": 60,
+        "record_length": 1200,
+        "record_count": 2877,
+        "tail": 0,
+        "score": 3.73,
+        "code_hits_first64": 137
+      },
+      {
+        "header": 1260,
+        "record_length": 1200,
+        "record_count": 2876,
+        "tail": 0,
+        "score": 3.73,
+        "code_hits_first64": 137
+      },
+      {
+        "header": 3660,
+        "record_length": 1200,
+        "record_count": 2874,
+        "tail": 0,
+        "score": 3.73,
+        "code_hits_first64": 137
+      },
+      {
+        "header": 2460,
+        "record_length": 1200,
+        "record_count": 2875,
+        "tail": 0,
+        "score": 3.725,
+        "code_hits_first64": 136
+      },
+      {
+        "header": 2460,
+        "record_length": 6000,
+        "record_count": 575,
+        "tail": 0,
+        "score": 3.72,
+        "code_hits_first64": 135
+      },
+      {
+        "header": 2460,
+        "record_length": 5000,
+        "record_count": 690,
+        "tail": 0,
+        "score": 3.715,
+        "code_hits_first64": 129
+      },
+      {
+        "header": 1260,
+        "record_length": 800,
+        "record_count": 4314,
+        "tail": 0,
+        "score": 3.71,
+        "code_hits_first64": 130
+      },
+      {
+        "header": 3660,
+        "record_length": 800,
+        "record_count": 4311,
+        "tail": 0,
+        "score": 3.71,
+        "code_hits_first64": 130
+      },
+      {
+        "header": 460,
+        "record_length": 800,
+        "record_count": 4315,
+        "tail": 0,
+        "score": 3.705,
+        "code_hits_first64": 129
+      },
+      {
+        "header": 2060,
+        "record_length": 800,
+        "record_count": 4313,
+        "tail": 0,
+        "score": 3.705,
+        "code_hits_first64": 129
+      },
+      {
+        "header": 2860,
+        "record_length": 800,
+        "record_count": 4312,
+        "tail": 0,
+        "score": 3.705,
+        "code_hits_first64": 129
+      },
+      {
+        "header": 3500,
+        "record_length": 640,
+        "record_count": 5389,
+        "tail": 0,
+        "score": 3.67,
+        "code_hits_first64": 121
+      },
+      {
+        "header": 2860,
+        "record_length": 640,
+        "record_count": 5390,
+        "tail": 0,
+        "score": 3.665,
+        "code_hits_first64": 120
+      },
+      {
+        "header": 3628,
+        "record_length": 512,
+        "record_count": 6736,
+        "tail": 0,
+        "score": 3.665,
+        "code_hits_first64": 113
+      },
+      {
+        "header": 2220,
+        "record_length": 640,
+        "record_count": 5391,
+        "tail": 0,
+        "score": 3.66,
+        "code_hits_first64": 119
+      },
+      {
+        "header": 2604,
+        "record_length": 512,
+        "record_count": 6738,
+        "tail": 0,
+        "score": 3.66,
+        "code_hits_first64": 112
+      },
+      {
+        "header": 3116,
+        "record_length": 512,
+        "record_count": 6737,
+        "tail": 0,
+        "score": 3.66,
+        "code_hits_first64": 112
+      },
+      {
+        "header": 2092,
+        "record_length": 512,
+        "record_count": 6739,
+        "tail": 0,
+        "score": 3.655,
+        "code_hits_first64": 111
+      }
+    ],
+    "kigyo3.dat": [
+      {
+        "header": 460,
+        "record_length": 4000,
+        "record_count": 863,
+        "tail": 0,
+        "score": 4.4,
+        "code_hits_first64": 169
+      },
+      {
+        "header": 2860,
+        "record_length": 3200,
+        "record_count": 1078,
+        "tail": 0,
+        "score": 4.38,
+        "code_hits_first64": 172
+      },
+      {
+        "header": 3628,
+        "record_length": 1024,
+        "record_count": 3368,
+        "tail": 0,
+        "score": 4.375,
+        "code_hits_first64": 158
+      },
+      {
+        "header": 1580,
+        "record_length": 1024,
+        "record_count": 3370,
+        "tail": 0,
+        "score": 4.37,
+        "code_hits_first64": 157
+      },
+      {
+        "header": 2604,
+        "record_length": 1024,
+        "record_count": 3369,
+        "tail": 0,
+        "score": 4.37,
+        "code_hits_first64": 157
+      },
+      {
+        "header": 556,
+        "record_length": 1024,
+        "record_count": 3371,
+        "tail": 0,
+        "score": 4.36,
+        "code_hits_first64": 156
+      },
+      {
+        "header": 2460,
+        "record_length": 2000,
+        "record_count": 1725,
+        "tail": 0,
+        "score": 4.355,
+        "code_hits_first64": 167
+      },
+      {
+        "header": 2460,
+        "record_length": 6000,
+        "record_count": 575,
+        "tail": 0,
+        "score": 4.35,
+        "code_hits_first64": 174
+      },
+      {
+        "header": 460,
+        "record_length": 2000,
+        "record_count": 1726,
+        "tail": 0,
+        "score": 4.345,
+        "code_hits_first64": 166
+      },
+      {
+        "header": 1260,
+        "record_length": 1600,
+        "record_count": 2157,
+        "tail": 0,
+        "score": 4.33,
+        "code_hits_first64": 167
+      },
+      {
+        "header": 2860,
+        "record_length": 1600,
+        "record_count": 2156,
+        "tail": 0,
+        "score": 4.33,
+        "code_hits_first64": 167
+      },
+      {
+        "header": 2460,
+        "record_length": 5000,
+        "record_count": 690,
+        "tail": 0,
+        "score": 4.3,
+        "code_hits_first64": 161
+      },
+      {
+        "header": 3660,
+        "record_length": 2400,
+        "record_count": 1437,
+        "tail": 0,
+        "score": 4.3,
+        "code_hits_first64": 172
+      },
+      {
+        "header": 1260,
+        "record_length": 2400,
+        "record_count": 1438,
+        "tail": 0,
+        "score": 4.295,
+        "code_hits_first64": 172
+      },
+      {
+        "header": 1260,
+        "record_length": 800,
+        "record_count": 4314,
+        "tail": 0,
+        "score": 4.24,
+        "code_hits_first64": 149
+      },
+      {
+        "header": 2060,
+        "record_length": 800,
+        "record_count": 4313,
+        "tail": 0,
+        "score": 4.24,
+        "code_hits_first64": 149
+      },
+      {
+        "header": 3660,
+        "record_length": 800,
+        "record_count": 4311,
+        "tail": 0,
+        "score": 4.24,
+        "code_hits_first64": 149
+      },
+      {
+        "header": 2860,
+        "record_length": 800,
+        "record_count": 4312,
+        "tail": 0,
+        "score": 4.235,
+        "code_hits_first64": 149
+      },
+      {
+        "header": 460,
+        "record_length": 800,
+        "record_count": 4315,
+        "tail": 0,
+        "score": 4.23,
+        "code_hits_first64": 148
+      },
+      {
+        "header": 3116,
+        "record_length": 512,
+        "record_count": 6737,
+        "tail": 0,
+        "score": 4.225,
+        "code_hits_first64": 135
+      },
+      {
+        "header": 3628,
+        "record_length": 512,
+        "record_count": 6736,
+        "tail": 0,
+        "score": 4.225,
+        "code_hits_first64": 136
+      },
+      {
+        "header": 1068,
+        "record_length": 512,
+        "record_count": 6741,
+        "tail": 0,
+        "score": 4.22,
+        "code_hits_first64": 133
+      },
+      {
+        "header": 1580,
+        "record_length": 512,
+        "record_count": 6740,
+        "tail": 0,
+        "score": 4.22,
+        "code_hits_first64": 133
+      },
+      {
+        "header": 2092,
+        "record_length": 512,
+        "record_count": 6739,
+        "tail": 0,
+        "score": 4.22,
+        "code_hits_first64": 133
+      },
+      {
+        "header": 2604,
+        "record_length": 512,
+        "record_count": 6738,
+        "tail": 0,
+        "score": 4.22,
+        "code_hits_first64": 134
+      },
+      {
+        "header": 556,
+        "record_length": 512,
+        "record_count": 6742,
+        "tail": 0,
+        "score": 4.21,
+        "code_hits_first64": 132
+      },
+      {
+        "header": 44,
+        "record_length": 512,
+        "record_count": 6743,
+        "tail": 0,
+        "score": 4.2,
+        "code_hits_first64": 131
+      },
+      {
+        "header": 3660,
+        "record_length": 1200,
+        "record_count": 2874,
+        "tail": 0,
+        "score": 4.185,
+        "code_hits_first64": 156
+      },
+      {
+        "header": 1260,
+        "record_length": 1200,
+        "record_count": 2876,
+        "tail": 0,
+        "score": 4.18,
+        "code_hits_first64": 155
+      },
+      {
+        "header": 2460,
+        "record_length": 1200,
+        "record_count": 2875,
+        "tail": 0,
+        "score": 4.18,
+        "code_hits_first64": 155
+      }
+    ],
+    "Zaimu.dat": [
+      {
+        "header": 3604,
+        "record_length": 2000,
+        "record_count": 23213,
+        "tail": 73,
+        "score": 1.825,
+        "code_hits_first64": 25
+      },
+      {
+        "header": 1604,
+        "record_length": 2000,
+        "record_count": 23214,
+        "tail": 73,
+        "score": 1.82,
+        "code_hits_first64": 25
+      },
+      {
+        "header": 3608,
+        "record_length": 2000,
+        "record_count": 23213,
+        "tail": 69,
+        "score": 1.81,
+        "code_hits_first64": 26
+      },
+      {
+        "header": 1608,
+        "record_length": 2000,
+        "record_count": 23214,
+        "tail": 69,
+        "score": 1.805,
+        "code_hits_first64": 26
+      },
+      {
+        "header": 3616,
+        "record_length": 2000,
+        "record_count": 23213,
+        "tail": 61,
+        "score": 1.8,
+        "code_hits_first64": 26
+      },
+      {
+        "header": 1616,
+        "record_length": 2000,
+        "record_count": 23214,
+        "tail": 61,
+        "score": 1.795,
+        "code_hits_first64": 26
+      },
+      {
+        "header": 1616,
+        "record_length": 4000,
+        "record_count": 11607,
+        "tail": 61,
+        "score": 1.785,
+        "code_hits_first64": 30
+      },
+      {
+        "header": 3612,
+        "record_length": 2000,
+        "record_count": 23213,
+        "tail": 65,
+        "score": 1.78,
+        "code_hits_first64": 26
+      },
+      {
+        "header": 1612,
+        "record_length": 2000,
+        "record_count": 23214,
+        "tail": 65,
+        "score": 1.775,
+        "code_hits_first64": 26
+      },
+      {
+        "header": 1612,
+        "record_length": 4000,
+        "record_count": 11607,
+        "tail": 65,
+        "score": 1.775,
+        "code_hits_first64": 28
+      },
+      {
+        "header": 1608,
+        "record_length": 4000,
+        "record_count": 11607,
+        "tail": 69,
+        "score": 1.77,
+        "code_hits_first64": 25
+      },
+      {
+        "header": 3620,
+        "record_length": 2000,
+        "record_count": 23213,
+        "tail": 57,
+        "score": 1.765,
+        "code_hits_first64": 25
+      },
+      {
+        "header": 1620,
+        "record_length": 2000,
+        "record_count": 23214,
+        "tail": 57,
+        "score": 1.76,
+        "code_hits_first64": 25
+      },
+      {
+        "header": 3548,
+        "record_length": 2000,
+        "record_count": 23213,
+        "tail": 129,
+        "score": 1.76,
+        "code_hits_first64": 24
+      },
+      {
+        "header": 1672,
+        "record_length": 4000,
+        "record_count": 11607,
+        "tail": 5,
+        "score": 1.755,
+        "code_hits_first64": 17
+      },
+      {
+        "header": 1624,
+        "record_length": 6000,
+        "record_count": 7738,
+        "tail": 53,
+        "score": 1.755,
+        "code_hits_first64": 26
+      },
+      {
+        "header": 1548,
+        "record_length": 2000,
+        "record_count": 23214,
+        "tail": 129,
+        "score": 1.755,
+        "code_hits_first64": 24
+      },
+      {
+        "header": 1628,
+        "record_length": 6000,
+        "record_count": 7738,
+        "tail": 49,
+        "score": 1.75,
+        "code_hits_first64": 27
+      },
+      {
+        "header": 3528,
+        "record_length": 2000,
+        "record_count": 23213,
+        "tail": 149,
+        "score": 1.75,
+        "code_hits_first64": 16
+      },
+      {
+        "header": 1620,
+        "record_length": 6000,
+        "record_count": 7738,
+        "tail": 57,
+        "score": 1.745,
+        "code_hits_first64": 25
+      },
+      {
+        "header": 3600,
+        "record_length": 2000,
+        "record_count": 23213,
+        "tail": 77,
+        "score": 1.745,
+        "code_hits_first64": 22
+      },
+      {
+        "header": 3552,
+        "record_length": 2000,
+        "record_count": 23213,
+        "tail": 125,
+        "score": 1.745,
+        "code_hits_first64": 23
+      },
+      {
+        "header": 1528,
+        "record_length": 2000,
+        "record_count": 23214,
+        "tail": 149,
+        "score": 1.745,
+        "code_hits_first64": 16
+      },
+      {
+        "header": 3836,
+        "record_length": 400,
+        "record_count": 116064,
+        "tail": 241,
+        "score": 1.745,
+        "code_hits_first64": 17
+      },
+      {
+        "header": 1600,
+        "record_length": 2000,
+        "record_count": 23214,
+        "tail": 77,
+        "score": 1.74,
+        "code_hits_first64": 22
+      },
+      {
+        "header": 1552,
+        "record_length": 2000,
+        "record_count": 23214,
+        "tail": 125,
+        "score": 1.74,
+        "code_hits_first64": 23
+      },
+      {
+        "header": 1628,
+        "record_length": 4000,
+        "record_count": 11607,
+        "tail": 49,
+        "score": 1.735,
+        "code_hits_first64": 31
+      },
+      {
+        "header": 1624,
+        "record_length": 2000,
+        "record_count": 23214,
+        "tail": 53,
+        "score": 1.735,
+        "code_hits_first64": 25
+      },
+      {
+        "header": 1624,
+        "record_length": 4000,
+        "record_count": 11607,
+        "tail": 53,
+        "score": 1.735,
+        "code_hits_first64": 30
+      },
+      {
+        "header": 3624,
+        "record_length": 2000,
+        "record_count": 23213,
+        "tail": 53,
+        "score": 1.735,
+        "code_hits_first64": 25
+      }
+    ]
+  },
+  "string_count": 1920,
+  "code_hit_count": 229
+}
