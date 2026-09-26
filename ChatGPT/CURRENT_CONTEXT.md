@@ -2,109 +2,124 @@
 
 ## 現在の最優先状態
 
-Codex側3文書の承認依頼一括化改定は正式更新・監査・GitHub同期まで完了した。
+Owner Attestation方式をSOSIA FAND全体へ正式導入し、IRBANK個別ゲートと整合させて開始前ゲートを再判定する。
 
-正式更新済み：
-1. `AGENTS.md`
-2. `規程/ROLE/ROLE_FUND_こう_ChiefManager.md`
-3. `規程/WORKFLOW/監査運用.md`
+Noriはこの一括方針を正式承認済み。
 
-GitHub commit：
-`c6055c562c57fd714c075d7bc22d0bed7f6bfd67`
+## Owner Attestation方式
 
-3文書ともカン反映後独立監査「適合（承認可）」、GitHub版とローカル正本はblob一致、未解決事項なし。
+目的：
+- Noriが人間判断事項を明示的に判断した後、同一の未確認事項・証拠不足について追加質問を反復しない。
+- 不明事項は推測せず、Nori判断により受容されたことを記録する。
+- 新たな具体的禁止事実、前提との重大な矛盾、技術的安全条件不適合が判明した場合のみ再停止する。
 
-## IRBANK / 0217 現在位置
+自動解除しないもの：
+- 外部送信・公開禁止
+- 恒久的権限拡大
+- 不可逆変更
+- 重要資産変更
+- 資金移動・契約締結
+- 正式規程・ROLE・WORKFLOW変更等に必要な別途承認
 
-1115作業は、公開本体とGit管理外の非公開付属書から成る1件の正式指示として発行済み。
+## 発行済みOwner Attestation案
 
-公開正式指示：
-`作業指示/20260926-1115_FAND_IRBANK手動取得運用導入・0217再開_作業指示書.md`
+GitHub main：
+1. ChatGPT/規程案/20260926_Owner_Attestation方式導入_全体改定案.md
+2. ChatGPT/規程案/20260926_AGENTS_Owner_Attestation_改定案.md
+3. ChatGPT/規程案/ROLE/20260926_ROLE_FUND_こう_Owner_Attestation_改定案.md
+4. ChatGPT/規程案/WORKFLOW/20260926_監査運用_Owner_Attestation_改定案.md
 
-GitHub commit：
-- 正式指示書：`ae8b320bb7b0c56644e43961971181b0693c1728`
-- 途中報告：`a99d688919bbf8cceaad56e585c05198b5bc69f1`
+Codexが是正し、カン独立再監査で4文書とも「適合（承認可）」。
 
-カンの正式発行後・GitHub反映後監査はいずれも「適合（承認可）」。
+最終是正版：
+- ChatGPT/規程案/20260926_Owner_Attestation方式導入_全体改定案_こう監査是正案.md
+- ChatGPT/規程案/20260926_AGENTS_Owner_Attestation_改定案_こう監査是正案.md
+- ChatGPT/規程案/ROLE/20260926_ROLE_FUND_こう_Owner_Attestation_改定案_こう監査是正案.md
+- ChatGPT/規程案/WORKFLOW/20260926_監査運用_Owner_Attestation_改定案_こう監査是正案.md
 
-IRBANK専用4子領域：
-- `incoming`
-- `current`
-- `archive`
-- `evidence`
+## Noriの最新正式判断
 
-上記4領域は作成済み。Codex実行主体には読取・実行のみを許可するACLを設定。親階層と既存年別フォルダのACLは変更前後一致。
+Noriは「1」を選択し、次を一括実施する方針を正式承認した。
 
-## sandbox / ACL確認結果
+- AGENTS.md
+- 規程/ROLE/ROLE_FUND_こう_ChiefManager.md
+- 規程/WORKFLOW/監査運用.md
 
-Noriが、IR BANK配下にフォルダが作成されたことからCodexの書込み権限を懸念したため確認した。
+へOwner Attestation方式を正式反映。
 
-確認結果：
-- sandbox mode：`workspace-write`
-- writable root：
-  - `E:\AI ワークスペース\CODEX\ファンドチーム_Workspace`
-  - Codex visualization領域
-  - sandbox一時領域
-- `D:\投資・トレード\株式\株式データ` とその配下は writable root に含まれない。
-- 4子領域の作成は、Noriの明示承認後に `sandbox_permissions: require_escalated` で実行。
-- 審査役 `auto_review` により、そのコマンド限りのsandbox外実行が許可された。
-- 実行主体は履歴上 `KING\nori`。
-- 現在の通常Codex実行主体は `KING\CodexSandboxOffline`。
-- 現在、通常のsandbox内実行ではDドライブ対象へ書込み不可。
-- writable rootや恒久設定は変更されていない。
+全体改定案は設計・監査記録として保全。
 
-結論：
-今回のフォルダ作成は恒久的な書込み権限拡大ではなく、明示承認された一時的なsandbox外実行によるもの。通常時のsandbox境界は維持されている。
+同時に、
+- 1115公開本体 v2
+- 規程/WORKFLOW/IRBANK手動取得データ運用.md
+- 必要に応じて1115非公開付属書 v2
 
-今後、高リスクまたはsandbox外操作の承認時には、何を作成・変更するか、どの操作がsandbox外か、一時か恒久かを承認前に明示する運用を重視する。
+を最小整合し、Owner Attestation成立後は既受容の同一不確実性だけで再停止しないようにする。
 
-## IRBANK開始前ゲート
+その後、
+- カン独立再監査
+- 今回のOwner Attestation適用
+- IRBANK開始前ゲート再判定
+- 公開対象正式文書のみGitHubミラー反映
+まで一括で進める。
 
-現時点は「要修正（Noriの手動入力待ち）」。
+## 今回のIRBANK Owner Attestation
 
-未了：
-1. IRBANK個別許諾メール原文・添付の配置と照合
-2. 非実データ `read_test_1115.txt` の配置と読取試験
+Noriは今回のIRBANK利用について、利用許諾を得ており、この用途で利用可能と判断することを明示している。
 
-そのため、実データ利用と0217再開は停止中。
-EDINET・FChartの未解消条件も維持。
+SOSIA FAND内部では、この申告を許諾ゲートの最終判断として扱う方針。
 
-## Noriの次の手動作業
+同一の許諾不確実性について追加証拠・追加申告・再確認を反復要求しない。
 
-今は次の①②だけ実施する。
+## IRBANK / 1115 現在位置
 
-① 許諾原文一式
-`D:\投資・トレード\株式\株式データ\IR BANK\evidence`
-へIRBANK個別許諾メールの原文＋添付一式を、元形式・元ファイル名のまま配置する。
+1115はv2へ正式改定済み。
 
-② 読取試験
-`D:\投資・トレード\株式\株式データ\IR BANK\current\read_test_1115.txt`
-を配置する。
-内容は個人情報・IRBANK実データ・認証情報を含まない単純なダミーテキストでよい。
+正式反映済み：
+- 作業指示/20260926-1115_FAND_IRBANK手動取得運用導入・0217再開_v2_作業指示書.md
+- 規程/WORKFLOW/IRBANK手動取得データ運用.md
+- 作業指示/非公開/20260926-1115_FAND_IRBANK手動取得運用導入・0217再開_非公開付属書_v2.md
 
-①②完了後、Codexへ以下で再開：
-「①許諾原文一式と②read_test_1115.txtの配置が完了しました。照合・読取試験・カンの開始前再監査を再開してください。」
+公開2文書GitHub commit：
+6643ce788b120577b41400680f2e41549bbe74c2
 
-③ IRBANK手動取得（最大4企業年度）は、開始前監査適合後に実施する。現時点ではまだ取得・配置しない。
+IRBANK専用4子領域は作成済み。
+Codex通常実行主体は読取・実行のみ。
+read_test_1115.txt は通常Codex実行主体で読取成功済み。
 
-対象予定：
-- トヨタ自動車株式会社 2024年3月期
-- トヨタ自動車株式会社 2025年3月期
-- 株式会社日立製作所 2024年3月期
-- 株式会社日立製作所 2025年3月期
+原チャット、スクリーンショット、メール原文等は残っていない。
+現存するのはNori本人が先方チャットから転記したテキスト。
 
-## 前段のデータ基盤状態
+## 維持する安全条件
 
-20260926-0217：
-- EDINET取得 0書類・0件
-- FChart原本内容アクセス 0 byte
-- IRBANKデータ取得・保存0件
-- accepted生成、hold解除、654候補展開、本番資産変更なし
+- Nori本人による手動取得のみ
+- CodexによるIRBANKサイト直接取得、自動取得、スクレイピング禁止
+- Codex読取専用
+- ACL、Git非公開、公開禁止条件維持
+- 認証情報、個人情報、機密情報保護
+- 恒久的権限拡大禁止
+- 不可逆変更・重要資産変更は別途承認
+- EDINET・FChart未解消停止条件維持
+- accepted生成禁止
+- hold解除禁止
+- 654候補展開禁止
+- 本番DB・コード・設定変更禁止
 
-0217は、IRBANK開始前ゲート適合後もIRBANK停止条件だけを再判定する。
-EDINET・FChart未解消条件を維持し、IRBANK適合だけで三者実数値比較可能とは判定しない。
+## 次のアクション
+
+前スレッド末尾で、次をCodexへ一括実施させる正式指示文を作成済み。
+
+1. Owner Attestation方式を3正式文書へ正式反映
+2. 1115 v2 / IRBANK WORKFLOW / 必要に応じ非公開付属書を最小整合
+3. 今回のOwner Attestationを適用
+4. カン独立再監査
+5. IRBANK開始前ゲート再判定
+6. 公開対象正式文書のみGitHubミラー反映
+7. 正式反映先、commit、監査結果、Attestation適用結果、ゲート最終判定、Nori次作業、0217再開可否を報告
+
+このCodex実行結果は前スレッドではまだ受領していない。
 
 ## スレッド引き継ぎ
 
 詳細：
-`ChatGPT/HANDOVER/20260926_IRBANK開始前ゲート_Nori手動入力待ち_引き継ぎ.md`
+ChatGPT/HANDOVER/20260926_Owner_Attestation正式化待ち_引き継ぎ.md
