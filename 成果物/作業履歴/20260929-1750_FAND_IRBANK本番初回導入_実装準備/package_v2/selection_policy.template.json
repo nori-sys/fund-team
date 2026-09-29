@@ -1,0 +1,9 @@
+{
+  "version": "fixed-selection/2",
+  "purpose": "fixed-first-four-internal-reference",
+  "selected_sources": {},
+  "duplicate_rule": "hold",
+  "conflict_rule": "hold",
+  "series_rule": "fixed-input-and-target-only",
+  "no_new_input_versions": true
+}

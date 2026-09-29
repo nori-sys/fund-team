@@ -1,0 +1,679 @@
+{
+  "spec": {
+    "version": "production-prep/2",
+    "purpose": "fixed-first-four-internal-reference",
+    "code_version": "production-prep/2",
+    "schema_version": "eight-tables/1",
+    "mapping_version": "production-map/2",
+    "validation_version": "G01-G08/2",
+    "policy_version": "fixed-selection/2",
+    "designation_version": "production-use/1",
+    "sources": [
+      {
+        "batch_id": "synthetic-A",
+        "source_id": "synthetic-source-A",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "size": 101
+      },
+      {
+        "batch_id": "synthetic-B",
+        "source_id": "synthetic-source-B",
+        "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "size": 102
+      }
+    ],
+    "targets": [
+      {
+        "record_id": "SYN-0-0",
+        "entity_id": "SYN001",
+        "identifier_scheme": "approved-string-code",
+        "period": "2000-03-31",
+        "period_type": "annual",
+        "metric": "net_profit",
+        "batch_id": "synthetic-A",
+        "row": 2,
+        "column": "SyntheticNetProfit",
+        "series": "fixed-synthetic-input-series",
+        "series_evidence": "synthetic-only-explicit-policy",
+        "evidence": {
+          "actual": {
+            "source_observation": "unknown",
+            "effective_value": "actual",
+            "evidence_type": "owner_designation",
+            "evidence_ref": "synthetic-evidence",
+            "designation_version": "production-use/1",
+            "applicable_input_version": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "applicable_targets": [
+              "SYN-0-0"
+            ],
+            "purpose": "fixed-first-four-internal-reference"
+          },
+          "profit_attribution": {
+            "source_observation": "unknown",
+            "effective_value": "parent_attributable",
+            "evidence_type": "owner_designation",
+            "evidence_ref": "synthetic-evidence",
+            "designation_version": "production-use/1",
+            "applicable_input_version": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "applicable_targets": [
+              "SYN-0-0"
+            ],
+            "purpose": "fixed-first-four-internal-reference"
+          },
+          "consolidation": {
+            "source_observation": "unknown",
+            "effective_value": "consolidated",
+            "evidence_type": "owner_designation",
+            "evidence_ref": "synthetic-evidence",
+            "designation_version": "production-use/1",
+            "applicable_input_version": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "applicable_targets": [
+              "SYN-0-0"
+            ],
+            "purpose": "fixed-first-four-internal-reference"
+          },
+          "currency": {
+            "source_observation": "unknown",
+            "effective_value": "JPY",
+            "evidence_type": "comparison_and_owner_designation",
+            "evidence_ref": "synthetic-evidence",
+            "designation_version": "production-use/1",
+            "applicable_input_version": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "applicable_targets": [
+              "SYN-0-0"
+            ],
+            "purpose": "fixed-first-four-internal-reference",
+            "comparison_proof": {
+              "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+              "input_versions": [
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+              ],
+              "targets": [
+                "SYN-0-0",
+                "SYN-0-1",
+                "SYN-1-0",
+                "SYN-1-1"
+              ],
+              "currency": "JPY",
+              "multiplier": "1",
+              "four_exact": true
+            }
+          }
+        }
+      },
+      {
+        "record_id": "SYN-0-1",
+        "entity_id": "SYN001",
+        "identifier_scheme": "approved-string-code",
+        "period": "2001-03-31",
+        "period_type": "annual",
+        "metric": "net_profit",
+        "batch_id": "synthetic-A",
+        "row": 3,
+        "column": "SyntheticNetProfit",
+        "series": "fixed-synthetic-input-series",
+        "series_evidence": "synthetic-only-explicit-policy",
+        "evidence": {
+          "actual": {
+            "source_observation": "unknown",
+            "effective_value": "actual",
+            "evidence_type": "owner_designation",
+            "evidence_ref": "synthetic-evidence",
+            "designation_version": "production-use/1",
+            "applicable_input_version": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "applicable_targets": [
+              "SYN-0-1"
+            ],
+            "purpose": "fixed-first-four-internal-reference"
+          },
+          "profit_attribution": {
+            "source_observation": "unknown",
+            "effective_value": "parent_attributable",
+            "evidence_type": "owner_designation",
+            "evidence_ref": "synthetic-evidence",
+            "designation_version": "production-use/1",
+            "applicable_input_version": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "applicable_targets": [
+              "SYN-0-1"
+            ],
+            "purpose": "fixed-first-four-internal-reference"
+          },
+          "consolidation": {
+            "source_observation": "unknown",
+            "effective_value": "consolidated",
+            "evidence_type": "owner_designation",
+            "evidence_ref": "synthetic-evidence",
+            "designation_version": "production-use/1",
+            "applicable_input_version": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "applicable_targets": [
+              "SYN-0-1"
+            ],
+            "purpose": "fixed-first-four-internal-reference"
+          },
+          "currency": {
+            "source_observation": "unknown",
+            "effective_value": "JPY",
+            "evidence_type": "comparison_and_owner_designation",
+            "evidence_ref": "synthetic-evidence",
+            "designation_version": "production-use/1",
+            "applicable_input_version": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "applicable_targets": [
+              "SYN-0-1"
+            ],
+            "purpose": "fixed-first-four-internal-reference",
+            "comparison_proof": {
+              "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+              "input_versions": [
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+              ],
+              "targets": [
+                "SYN-0-0",
+                "SYN-0-1",
+                "SYN-1-0",
+                "SYN-1-1"
+              ],
+              "currency": "JPY",
+              "multiplier": "1",
+              "four_exact": true
+            }
+          }
+        }
+      },
+      {
+        "record_id": "SYN-1-0",
+        "entity_id": "SYN002",
+        "identifier_scheme": "approved-string-code",
+        "period": "2000-03-31",
+        "period_type": "annual",
+        "metric": "net_profit",
+        "batch_id": "synthetic-B",
+        "row": 2,
+        "column": "SyntheticNetProfit",
+        "series": "fixed-synthetic-input-series",
+        "series_evidence": "synthetic-only-explicit-policy",
+        "evidence": {
+          "actual": {
+            "source_observation": "unknown",
+            "effective_value": "actual",
+            "evidence_type": "owner_designation",
+            "evidence_ref": "synthetic-evidence",
+            "designation_version": "production-use/1",
+            "applicable_input_version": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "applicable_targets": [
+              "SYN-1-0"
+            ],
+            "purpose": "fixed-first-four-internal-reference"
+          },
+          "profit_attribution": {
+            "source_observation": "unknown",
+            "effective_value": "parent_attributable",
+            "evidence_type": "owner_designation",
+            "evidence_ref": "synthetic-evidence",
+            "designation_version": "production-use/1",
+            "applicable_input_version": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "applicable_targets": [
+              "SYN-1-0"
+            ],
+            "purpose": "fixed-first-four-internal-reference"
+          },
+          "consolidation": {
+            "source_observation": "unknown",
+            "effective_value": "consolidated",
+            "evidence_type": "owner_designation",
+            "evidence_ref": "synthetic-evidence",
+            "designation_version": "production-use/1",
+            "applicable_input_version": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "applicable_targets": [
+              "SYN-1-0"
+            ],
+            "purpose": "fixed-first-four-internal-reference"
+          },
+          "currency": {
+            "source_observation": "unknown",
+            "effective_value": "JPY",
+            "evidence_type": "comparison_and_owner_designation",
+            "evidence_ref": "synthetic-evidence",
+            "designation_version": "production-use/1",
+            "applicable_input_version": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "applicable_targets": [
+              "SYN-1-0"
+            ],
+            "purpose": "fixed-first-four-internal-reference",
+            "comparison_proof": {
+              "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+              "input_versions": [
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+              ],
+              "targets": [
+                "SYN-0-0",
+                "SYN-0-1",
+                "SYN-1-0",
+                "SYN-1-1"
+              ],
+              "currency": "JPY",
+              "multiplier": "1",
+              "four_exact": true
+            }
+          }
+        }
+      },
+      {
+        "record_id": "SYN-1-1",
+        "entity_id": "SYN002",
+        "identifier_scheme": "approved-string-code",
+        "period": "2001-03-31",
+        "period_type": "annual",
+        "metric": "net_profit",
+        "batch_id": "synthetic-B",
+        "row": 3,
+        "column": "SyntheticNetProfit",
+        "series": "fixed-synthetic-input-series",
+        "series_evidence": "synthetic-only-explicit-policy",
+        "evidence": {
+          "actual": {
+            "source_observation": "unknown",
+            "effective_value": "actual",
+            "evidence_type": "owner_designation",
+            "evidence_ref": "synthetic-evidence",
+            "designation_version": "production-use/1",
+            "applicable_input_version": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "applicable_targets": [
+              "SYN-1-1"
+            ],
+            "purpose": "fixed-first-four-internal-reference"
+          },
+          "profit_attribution": {
+            "source_observation": "unknown",
+            "effective_value": "parent_attributable",
+            "evidence_type": "owner_designation",
+            "evidence_ref": "synthetic-evidence",
+            "designation_version": "production-use/1",
+            "applicable_input_version": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "applicable_targets": [
+              "SYN-1-1"
+            ],
+            "purpose": "fixed-first-four-internal-reference"
+          },
+          "consolidation": {
+            "source_observation": "unknown",
+            "effective_value": "consolidated",
+            "evidence_type": "owner_designation",
+            "evidence_ref": "synthetic-evidence",
+            "designation_version": "production-use/1",
+            "applicable_input_version": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "applicable_targets": [
+              "SYN-1-1"
+            ],
+            "purpose": "fixed-first-four-internal-reference"
+          },
+          "currency": {
+            "source_observation": "unknown",
+            "effective_value": "JPY",
+            "evidence_type": "comparison_and_owner_designation",
+            "evidence_ref": "synthetic-evidence",
+            "designation_version": "production-use/1",
+            "applicable_input_version": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "applicable_targets": [
+              "SYN-1-1"
+            ],
+            "purpose": "fixed-first-four-internal-reference",
+            "comparison_proof": {
+              "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+              "input_versions": [
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+              ],
+              "targets": [
+                "SYN-0-0",
+                "SYN-0-1",
+                "SYN-1-0",
+                "SYN-1-1"
+              ],
+              "currency": "JPY",
+              "multiplier": "1",
+              "four_exact": true
+            }
+          }
+        }
+      }
+    ]
+  },
+  "records": [
+    {
+      "record_id": "SYN-0-0",
+      "entity_id": "SYN001",
+      "period": "2000-03-31",
+      "period_type": "annual",
+      "metric": "net_profit",
+      "row": 2,
+      "column": "SyntheticNetProfit",
+      "raw_value": "0",
+      "raw_unit": "JPY",
+      "scale": "1",
+      "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "source_csv_spec_proven": false,
+      "evidence": {
+        "actual": {
+          "source_observation": "unknown",
+          "effective_value": "actual",
+          "evidence_type": "owner_designation",
+          "evidence_ref": "synthetic-evidence",
+          "designation_version": "production-use/1",
+          "applicable_input_version": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "applicable_targets": [
+            "SYN-0-0"
+          ],
+          "purpose": "fixed-first-four-internal-reference"
+        },
+        "profit_attribution": {
+          "source_observation": "unknown",
+          "effective_value": "parent_attributable",
+          "evidence_type": "owner_designation",
+          "evidence_ref": "synthetic-evidence",
+          "designation_version": "production-use/1",
+          "applicable_input_version": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "applicable_targets": [
+            "SYN-0-0"
+          ],
+          "purpose": "fixed-first-four-internal-reference"
+        },
+        "consolidation": {
+          "source_observation": "unknown",
+          "effective_value": "consolidated",
+          "evidence_type": "owner_designation",
+          "evidence_ref": "synthetic-evidence",
+          "designation_version": "production-use/1",
+          "applicable_input_version": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "applicable_targets": [
+            "SYN-0-0"
+          ],
+          "purpose": "fixed-first-four-internal-reference"
+        },
+        "currency": {
+          "source_observation": "unknown",
+          "effective_value": "JPY",
+          "evidence_type": "comparison_and_owner_designation",
+          "evidence_ref": "synthetic-evidence",
+          "designation_version": "production-use/1",
+          "applicable_input_version": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "applicable_targets": [
+            "SYN-0-0"
+          ],
+          "purpose": "fixed-first-four-internal-reference",
+          "comparison_proof": {
+            "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "input_versions": [
+              "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+            ],
+            "targets": [
+              "SYN-0-0",
+              "SYN-0-1",
+              "SYN-1-0",
+              "SYN-1-1"
+            ],
+            "currency": "JPY",
+            "multiplier": "1",
+            "four_exact": true
+          }
+        }
+      }
+    },
+    {
+      "record_id": "SYN-0-1",
+      "entity_id": "SYN001",
+      "period": "2001-03-31",
+      "period_type": "annual",
+      "metric": "net_profit",
+      "row": 3,
+      "column": "SyntheticNetProfit",
+      "raw_value": "-12",
+      "raw_unit": "JPY",
+      "scale": "1",
+      "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "source_csv_spec_proven": false,
+      "evidence": {
+        "actual": {
+          "source_observation": "unknown",
+          "effective_value": "actual",
+          "evidence_type": "owner_designation",
+          "evidence_ref": "synthetic-evidence",
+          "designation_version": "production-use/1",
+          "applicable_input_version": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "applicable_targets": [
+            "SYN-0-1"
+          ],
+          "purpose": "fixed-first-four-internal-reference"
+        },
+        "profit_attribution": {
+          "source_observation": "unknown",
+          "effective_value": "parent_attributable",
+          "evidence_type": "owner_designation",
+          "evidence_ref": "synthetic-evidence",
+          "designation_version": "production-use/1",
+          "applicable_input_version": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "applicable_targets": [
+            "SYN-0-1"
+          ],
+          "purpose": "fixed-first-four-internal-reference"
+        },
+        "consolidation": {
+          "source_observation": "unknown",
+          "effective_value": "consolidated",
+          "evidence_type": "owner_designation",
+          "evidence_ref": "synthetic-evidence",
+          "designation_version": "production-use/1",
+          "applicable_input_version": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "applicable_targets": [
+            "SYN-0-1"
+          ],
+          "purpose": "fixed-first-four-internal-reference"
+        },
+        "currency": {
+          "source_observation": "unknown",
+          "effective_value": "JPY",
+          "evidence_type": "comparison_and_owner_designation",
+          "evidence_ref": "synthetic-evidence",
+          "designation_version": "production-use/1",
+          "applicable_input_version": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "applicable_targets": [
+            "SYN-0-1"
+          ],
+          "purpose": "fixed-first-four-internal-reference",
+          "comparison_proof": {
+            "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "input_versions": [
+              "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+            ],
+            "targets": [
+              "SYN-0-0",
+              "SYN-0-1",
+              "SYN-1-0",
+              "SYN-1-1"
+            ],
+            "currency": "JPY",
+            "multiplier": "1",
+            "four_exact": true
+          }
+        }
+      }
+    },
+    {
+      "record_id": "SYN-1-0",
+      "entity_id": "SYN002",
+      "period": "2000-03-31",
+      "period_type": "annual",
+      "metric": "net_profit",
+      "row": 2,
+      "column": "SyntheticNetProfit",
+      "raw_value": "9007199254740993",
+      "raw_unit": "JPY",
+      "scale": "1",
+      "source_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "source_csv_spec_proven": false,
+      "evidence": {
+        "actual": {
+          "source_observation": "unknown",
+          "effective_value": "actual",
+          "evidence_type": "owner_designation",
+          "evidence_ref": "synthetic-evidence",
+          "designation_version": "production-use/1",
+          "applicable_input_version": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "applicable_targets": [
+            "SYN-1-0"
+          ],
+          "purpose": "fixed-first-four-internal-reference"
+        },
+        "profit_attribution": {
+          "source_observation": "unknown",
+          "effective_value": "parent_attributable",
+          "evidence_type": "owner_designation",
+          "evidence_ref": "synthetic-evidence",
+          "designation_version": "production-use/1",
+          "applicable_input_version": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "applicable_targets": [
+            "SYN-1-0"
+          ],
+          "purpose": "fixed-first-four-internal-reference"
+        },
+        "consolidation": {
+          "source_observation": "unknown",
+          "effective_value": "consolidated",
+          "evidence_type": "owner_designation",
+          "evidence_ref": "synthetic-evidence",
+          "designation_version": "production-use/1",
+          "applicable_input_version": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "applicable_targets": [
+            "SYN-1-0"
+          ],
+          "purpose": "fixed-first-four-internal-reference"
+        },
+        "currency": {
+          "source_observation": "unknown",
+          "effective_value": "JPY",
+          "evidence_type": "comparison_and_owner_designation",
+          "evidence_ref": "synthetic-evidence",
+          "designation_version": "production-use/1",
+          "applicable_input_version": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "applicable_targets": [
+            "SYN-1-0"
+          ],
+          "purpose": "fixed-first-four-internal-reference",
+          "comparison_proof": {
+            "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "input_versions": [
+              "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+            ],
+            "targets": [
+              "SYN-0-0",
+              "SYN-0-1",
+              "SYN-1-0",
+              "SYN-1-1"
+            ],
+            "currency": "JPY",
+            "multiplier": "1",
+            "four_exact": true
+          }
+        }
+      }
+    },
+    {
+      "record_id": "SYN-1-1",
+      "entity_id": "SYN002",
+      "period": "2001-03-31",
+      "period_type": "annual",
+      "metric": "net_profit",
+      "row": 3,
+      "column": "SyntheticNetProfit",
+      "raw_value": "1.25",
+      "raw_unit": "JPY",
+      "scale": "1",
+      "source_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "source_csv_spec_proven": false,
+      "evidence": {
+        "actual": {
+          "source_observation": "unknown",
+          "effective_value": "actual",
+          "evidence_type": "owner_designation",
+          "evidence_ref": "synthetic-evidence",
+          "designation_version": "production-use/1",
+          "applicable_input_version": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "applicable_targets": [
+            "SYN-1-1"
+          ],
+          "purpose": "fixed-first-four-internal-reference"
+        },
+        "profit_attribution": {
+          "source_observation": "unknown",
+          "effective_value": "parent_attributable",
+          "evidence_type": "owner_designation",
+          "evidence_ref": "synthetic-evidence",
+          "designation_version": "production-use/1",
+          "applicable_input_version": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "applicable_targets": [
+            "SYN-1-1"
+          ],
+          "purpose": "fixed-first-four-internal-reference"
+        },
+        "consolidation": {
+          "source_observation": "unknown",
+          "effective_value": "consolidated",
+          "evidence_type": "owner_designation",
+          "evidence_ref": "synthetic-evidence",
+          "designation_version": "production-use/1",
+          "applicable_input_version": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "applicable_targets": [
+            "SYN-1-1"
+          ],
+          "purpose": "fixed-first-four-internal-reference"
+        },
+        "currency": {
+          "source_observation": "unknown",
+          "effective_value": "JPY",
+          "evidence_type": "comparison_and_owner_designation",
+          "evidence_ref": "synthetic-evidence",
+          "designation_version": "production-use/1",
+          "applicable_input_version": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "applicable_targets": [
+            "SYN-1-1"
+          ],
+          "purpose": "fixed-first-four-internal-reference",
+          "comparison_proof": {
+            "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "input_versions": [
+              "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+            ],
+            "targets": [
+              "SYN-0-0",
+              "SYN-0-1",
+              "SYN-1-0",
+              "SYN-1-1"
+            ],
+            "currency": "JPY",
+            "multiplier": "1",
+            "four_exact": true
+          }
+        }
+      }
+    }
+  ],
+  "policy": {
+    "version": "fixed-selection/2",
+    "purpose": "fixed-first-four-internal-reference",
+    "selected_sources": {
+      "SYN-0-0": "synthetic-A",
+      "SYN-0-1": "synthetic-A",
+      "SYN-1-0": "synthetic-B",
+      "SYN-1-1": "synthetic-B"
+    },
+    "duplicate_rule": "hold",
+    "conflict_rule": "hold",
+    "series_rule": "fixed-input-and-target-only"
+  }
+}

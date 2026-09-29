@@ -1,0 +1,28 @@
+{
+  "version": "production-map/2",
+  "source_csv_spec_proven": false,
+  "source_observation": "unknown",
+  "effective_attributes": {
+    "actual": "actual",
+    "profit_attribution": "parent_attributable",
+    "consolidation": "consolidated",
+    "currency": "JPY"
+  },
+  "raw_unit": "JPY",
+  "currency_scale": "1",
+  "designation_version": "1750-production-use/1",
+  "purpose": "fixed-first-four-internal-reference",
+  "evidence_fields": [
+    "source_observation",
+    "effective_value",
+    "evidence_type",
+    "evidence_ref",
+    "designation_version",
+    "applicable_input_version",
+    "applicable_targets",
+    "purpose"
+  ],
+  "sources": [],
+  "targets": [],
+  "state": "unbound-template"
+}

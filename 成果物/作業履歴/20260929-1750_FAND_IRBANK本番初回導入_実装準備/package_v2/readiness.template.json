@@ -1,0 +1,10 @@
+{
+  "version": "production-readiness/1",
+  "preparation_selfcheck": false,
+  "preparation_audit": false,
+  "production_prestart_audit": false,
+  "production_completion_audit": false,
+  "nori_activation_approval": false,
+  "ready": false,
+  "production_operations_performed": false
+}

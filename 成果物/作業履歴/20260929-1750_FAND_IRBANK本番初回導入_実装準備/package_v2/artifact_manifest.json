@@ -1,0 +1,90 @@
+{
+  "package_version": "production-prep/2",
+  "python": "3.12.14",
+  "sqlite": "3.53.1",
+  "files": [
+    {
+      "file": "audit_checklist.md",
+      "bytes": 1345,
+      "sha256": "6354f2cf338982a2094200846e5603dbea073961c1cf0aeb04defc7e1ced8f60"
+    },
+    {
+      "file": "backup_restore_procedure.md",
+      "bytes": 1538,
+      "sha256": "bcd87db52c6bc195e8dcddc171fe8b17685e4f2ef8c2cafe918b9d82b03b1267"
+    },
+    {
+      "file": "config.template.json",
+      "bytes": 459,
+      "sha256": "98716eb1c51c2025c871f6c0986c280fc9667765193ddacf624bda422fc62513"
+    },
+    {
+      "file": "first_load_procedure.md",
+      "bytes": 2836,
+      "sha256": "f14f13355ab1a29689320f3fa8ab28fe3885d9c8ae22c45b5aab26136eaea4fc"
+    },
+    {
+      "file": "input_manifest.template.json",
+      "bytes": 890,
+      "sha256": "38cad84a0f0e388bfe677694687f6d8473687136dfbe78edab0f8f575dcb72e8"
+    },
+    {
+      "file": "loader.py",
+      "bytes": 8501,
+      "sha256": "1574d7570a97d7ac21db0a04e5db1428d10d2d3c6f2483ac2f0930eee21d7e6b"
+    },
+    {
+      "file": "metric_mapping.template.json",
+      "bytes": 701,
+      "sha256": "e051707b56092b72516610b445b7bb81ca1b27adc63e4735d80b7cf26b35ebee"
+    },
+    {
+      "file": "reader.py",
+      "bytes": 11045,
+      "sha256": "d261c8e2df0561b3b4ea69268d22d7e1af3561ee2ff0fa231d817a62e381a60e"
+    },
+    {
+      "file": "readiness.template.json",
+      "bytes": 283,
+      "sha256": "6159ae6a0d3045f5fe4a711e8260187059a38c74061c6ba159939209ff68d0ae"
+    },
+    {
+      "file": "README.md",
+      "bytes": 2082,
+      "sha256": "e92325a81bf0b4218a03e7fe675f49cbdca1ab7dd8016259eb6dd5f618a41d32"
+    },
+    {
+      "file": "schema.sql",
+      "bytes": 3408,
+      "sha256": "b6e3fbbd0011d0549e86c73391c77da19effcb931105249c894866865a07e663"
+    },
+    {
+      "file": "selection_policy.template.json",
+      "bytes": 251,
+      "sha256": "0c3190592fb43b6e8ab0206e74725bc0b26c71e12e48af6df9f8a0f582ce80ab"
+    },
+    {
+      "file": "synthetic_fixture.json",
+      "bytes": 26274,
+      "sha256": "d9466bf931c90b91a66cb63f347080fbf82b3d6ed6d5059fcd78661f522ac73d"
+    },
+    {
+      "file": "target_scope.template.json",
+      "bytes": 187,
+      "sha256": "6f2a4dedcbf856a8c8e57f81ebbb3eaabbadc5c81831531baa78030a4b4ab368"
+    },
+    {
+      "file": "test_package.py",
+      "bytes": 13119,
+      "sha256": "30ddd505fdca6501c053851ad3783eb74eee49fc250b6c3a76719394d1639331"
+    },
+    {
+      "file": "validator.py",
+      "bytes": 7775,
+      "sha256": "93f4263ed3f2143c13c698a406f9f11429d543ca645b951988127b47d99e9d6b"
+    }
+  ],
+  "self_hash": "externally-pinned-in-reports",
+  "production_operations": false,
+  "prior_version": "package_v1 preserved; requires correction"
+}

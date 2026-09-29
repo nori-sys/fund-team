@@ -1,0 +1,42 @@
+{
+  "version": "production-prep/2",
+  "purpose": "fixed-first-four-internal-reference",
+  "code_version": "production-prep/2",
+  "schema_version": "eight-tables/1",
+  "mapping_version": "production-map/2",
+  "validation_version": "G01-G08/2",
+  "policy_version": "fixed-selection/2",
+  "designation_version": "1750-production-use/1",
+  "sources": [],
+  "targets": [],
+  "required_source_fields": [
+    "batch_id",
+    "source_id",
+    "sha256",
+    "size",
+    "path",
+    "encoding",
+    "header",
+    "header_record",
+    "missing_tokens"
+  ],
+  "required_target_fields": [
+    "record_id",
+    "entity_id",
+    "identifier_scheme",
+    "period",
+    "period_type",
+    "metric",
+    "batch_id",
+    "row",
+    "column",
+    "series",
+    "series_evidence",
+    "entity_column",
+    "period_column",
+    "csv_entity",
+    "csv_period",
+    "evidence"
+  ],
+  "state": "unbound-template"
+}

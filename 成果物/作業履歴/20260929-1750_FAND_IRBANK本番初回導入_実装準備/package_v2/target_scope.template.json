@@ -1,0 +1,10 @@
+{
+  "version": "production-target-scope/1",
+  "source_versions": [],
+  "targets": [],
+  "count": 4,
+  "entities": 2,
+  "periods": 2,
+  "metric": "net_profit",
+  "generalization": false
+}

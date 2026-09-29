@@ -1,0 +1,18 @@
+{
+  "version": "production-prep/2",
+  "mode": "preparation",
+  "spec_digest": null,
+  "schema_sha256": null,
+  "artifact_hashes": null,
+  "database_path": null,
+  "database_sha256": null,
+  "ready": false,
+  "production_approved": false,
+  "deployment_approved": false,
+  "first_load_approved": false,
+  "approval_ref": null,
+  "prestart_audit_ref": null,
+  "first_load_approval_ref": null,
+  "completion_audit_ref": null,
+  "activation_approval_ref": null
+}
