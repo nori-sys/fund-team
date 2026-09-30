@@ -1,10 +1,12 @@
 # CURRENT_CONTEXT
 
-## 復元キー
-詳細基準：
-`ChatGPT/HANDOVER/20260930_IRBANK本番初回導入_第6群完了_限定内部稼働後_引き継ぎ.md`
+## GitHub参照先（必須固定）
+- repository: `nori-sys/fund-team`
+- branch: `main`
+- 本ファイル: `ChatGPT/CURRENT_CONTEXT.md`
+- 詳細HANDOVER: `ChatGPT/HANDOVER/20260930_IRBANK本番初回導入_第6群完了_限定内部稼働後_引き継ぎ.md`
 
-新スレッドは上記HANDOVERを必ず確認する。
+新スレッドでは、GitHub接続からrepositoryを推測せず、必ず `nori-sys/fund-team` の `main` を直接指定して本ファイルとHANDOVERを取得する。
 
 ## 現在地
 - 企業業績DB：IRBANK主系統／EDINET・FChart補助系統。
@@ -51,7 +53,9 @@ backupは本番と同じ保存系統にあり、共通媒体障害からの復�
 - 第6群成果物は直前報告時点でGitHub未送信。未確認の反映を推測しない。
 
 ## 新スレッドで最初にすること
-1. 指定HANDOVERを読む。
-2. 第1〜6群完了、ready=true、限定内部reader稼働を固定する。
-3. 残存リスクと未承認事項を維持する。
-4. Noriの次工程判断から再開する。
+1. GitHub repository `nori-sys/fund-team` / branch `main` を明示指定する。
+2. `ChatGPT/CURRENT_CONTEXT.md` を実体取得する。
+3. `ChatGPT/HANDOVER/20260930_IRBANK本番初回導入_第6群完了_限定内部稼働後_引き継ぎ.md` を実体取得する。
+4. 第1〜6群完了、ready=true、限定内部reader稼働を固定する。
+5. 残存リスクと未承認事項を維持する。
+6. Noriの次工程判断から再開する。
